@@ -150,6 +150,10 @@
     .wontdo li { display: flex; align-items: center; gap: 11px; font-family: var(--mono); font-size: 13.5px; color: var(--fg-2); }
     .wontdo .x { width: 18px; height: 18px; flex: none; border-radius: 50%; display: grid; place-items: center; color: var(--red); background: var(--red-soft); border: 1px solid rgba(242,114,109,.28); font-size: 10px; font-weight: 700; }
 
+    /* real app screenshots (phone-framed) */
+    .shot { width: 316px; max-width: 100%; margin: 0 auto; border-radius: 34px; background: linear-gradient(180deg, #1a1a1c, #121214); border: 1px solid var(--border-2); padding: 10px; box-shadow: 0 40px 80px -34px rgba(0,0,0,.85), inset 0 1px 0 rgba(255,255,255,.04); }
+    .shot img { width: 100%; display: block; border-radius: 25px; }
+
     /* mockup chrome */
     .panel { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; box-shadow: 0 24px 60px -34px rgba(0,0,0,.8); }
     .panel-bar { display: flex; align-items: center; gap: 8px; padding: 10px 13px; background: var(--surface); border-bottom: 1px solid var(--border); }
@@ -319,31 +323,7 @@
       <div class="wrap sec-grid">
         <div class="rail"><p class="kicker">History</p><h2>The commit graph, like you get on desktop.</h2><p class="prose" style="margin-top:14px">Branches get their own lanes, merges connect back up, and your uncommitted changes sit right at the top. It's your actual <span class="mono">git log</span>, drawn out — not a flat list of messages.</p></div>
         <div class="body">
-          <div class="panel">
-            <div class="panel-bar"><span class="fname">web-dashboard · history</span><span class="tag">main · 1,284</span></div>
-            <div>
-              <div class="grow">
-                <svg width="54" height="44" viewBox="0 0 54 44" aria-hidden="true"><line x1="16" y1="22" x2="16" y2="44" stroke="#3ddc84" stroke-width="2"/><circle cx="16" cy="22" r="5.5" fill="var(--card)" stroke="#3ddc84" stroke-width="2.5"/></svg>
-                <div class="gmeta"><span class="subj wt">Working tree — 3 changed</span><span class="hash mono">••••</span></div>
-              </div>
-              <div class="grow">
-                <svg width="54" height="44" viewBox="0 0 54 44" aria-hidden="true"><line x1="16" y1="0" x2="16" y2="44" stroke="#3ddc84" stroke-width="2"/><path d="M16 22 C16 12, 38 28, 38 44" fill="none" stroke="#8a8f98" stroke-width="2"/><circle cx="16" cy="22" r="5" fill="#3ddc84"/></svg>
-                <div class="gmeta"><span class="subj">Merge branch 'feat/login'</span><span class="hash">a1f9c02</span><span class="auth">2h</span></div>
-              </div>
-              <div class="grow">
-                <svg width="54" height="44" viewBox="0 0 54 44" aria-hidden="true"><line x1="16" y1="0" x2="16" y2="44" stroke="#3ddc84" stroke-width="2"/><line x1="38" y1="0" x2="38" y2="44" stroke="#8a8f98" stroke-width="2"/><circle cx="38" cy="22" r="5" fill="#8a8f98"/></svg>
-                <div class="gmeta"><span class="subj">Add PKCE callback handler</span><span class="hash">7d4be18</span><span class="auth">3h</span></div>
-              </div>
-              <div class="grow">
-                <svg width="54" height="44" viewBox="0 0 54 44" aria-hidden="true"><line x1="16" y1="0" x2="16" y2="44" stroke="#3ddc84" stroke-width="2"/><line x1="38" y1="0" x2="38" y2="44" stroke="#8a8f98" stroke-width="2"/><circle cx="16" cy="22" r="5" fill="#3ddc84"/></svg>
-                <div class="gmeta"><span class="subj">Bump hono to 4.6</span><span class="hash">3c07af5</span><span class="auth">5h</span></div>
-              </div>
-              <div class="grow">
-                <svg width="54" height="44" viewBox="0 0 54 44" aria-hidden="true"><path d="M38 0 C38 16, 16 28, 16 44" fill="none" stroke="#8a8f98" stroke-width="2"/><line x1="16" y1="22" x2="16" y2="44" stroke="#3ddc84" stroke-width="2"/><circle cx="16" cy="22" r="5" fill="#3ddc84"/></svg>
-                <div class="gmeta"><span class="subj">Branch feat/login off main</span><span class="hash">f92100a</span><span class="auth">6h</span></div>
-              </div>
-            </div>
-          </div>
+          <div class="shot"><img src="shots/graph.png" alt="Git-graph history in the RepoYeti app — commit lanes with a branch and merge" loading="lazy" /></div>
         </div>
       </div>
     </section>
@@ -353,18 +333,7 @@
       <div class="wrap sec-grid">
         <div class="rail"><p class="kicker">Viewer &amp; diffs</p><h2>It's the actual VS Code editor.</h2><p class="prose" style="margin-top:14px">Open a file and you get real Monaco — syntax highlighting, proper diffs against HEAD, and the unchanged parts folded out of the way. Need to fix a typo? Edit it and save, right there.</p></div>
         <div class="body">
-          <div class="panel">
-            <div class="panel-bar"><span class="fname">src/auth/callback.ts</span><span class="seg"><span class="on">Split</span><span>Inline</span></span></div>
-            <div class="diff">
-              <div class="fold">⋯ 24 unchanged lines</div>
-              <div class="dline"><span class="ln">41</span><span class="ln">41</span><code><span class="sign"> </span> <span class="tok-k">const</span> code = url.searchParams.<span class="tok-f">get</span>(<span class="tok-s">"code"</span>)</code></div>
-              <div class="dline del"><span class="ln">42</span><span class="ln"></span><code><span class="sign">-</span> <span class="tok-k">if</span> (!code) <span class="tok-k">throw</span> <span class="tok-k">new</span> <span class="tok-f">Error</span>(<span class="tok-s">"no code"</span>)</code></div>
-              <div class="dline add"><span class="ln"></span><span class="ln">42</span><code><span class="sign">+</span> <span class="tok-k">if</span> (!code || !verifier)</code></div>
-              <div class="dline add"><span class="ln"></span><span class="ln">43</span><code><span class="sign">+</span>   <span class="tok-k">return</span> <span class="tok-f">fail</span>(<span class="tok-s">"missing_pkce"</span>)</code></div>
-              <div class="dline"><span class="ln">43</span><span class="ln">44</span><code><span class="sign"> </span> <span class="tok-k">const</span> tok = <span class="tok-k">await</span> <span class="tok-f">exchange</span>(code)</code></div>
-              <div class="fold">⋯ 61 unchanged lines</div>
-            </div>
-          </div>
+          <div class="shot"><img src="shots/diff.png" alt="Monaco diff viewer in the RepoYeti app — syntax highlighting with added and removed lines" loading="lazy" /></div>
         </div>
       </div>
     </section>
