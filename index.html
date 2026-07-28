@@ -106,28 +106,10 @@
        square and read as a generic rounded rectangle. The screen drives the aspect and the shell
        just wraps it, so the two corner radii stay concentric (outer = inner + bezel). */
     .phone { width: 300px; max-width: 100%; border-radius: 44px; background: linear-gradient(180deg, #2a2a2e, #131315); padding: 5px; box-shadow: 0 40px 80px -34px rgba(0,0,0,.85), inset 0 1px 0 rgba(255,255,255,.06); }
+    .phone-demo { width: 100%; height: 100%; display: block; object-fit: cover; }
     .phone-screen { aspect-ratio: 9 / 19.5; background: var(--bg); border-radius: 39px; overflow: hidden; display: flex; flex-direction: column; }
-    .phone-top { display: flex; align-items: center; justify-content: space-between; padding: 14px 15px 12px; border-bottom: 1px solid var(--border); }
-    .phone-top .ttl { display: flex; align-items: center; gap: 8px; font-weight: 620; font-size: 13.5px; }
-    .phone-top .ttl img { width: 17px; height: 17px; border-radius: 50%; }
-    .phone-top .cnt { font-family: var(--mono); font-size: 10.5px; color: var(--faint); }
-    /* Fills the taller screen and pushes the CTA to the bottom edge, the way the real app sits. */
-    .repo-list { padding: 8px; display: flex; flex-direction: column; gap: 7px; transition: opacity .3s; flex: 1 1 auto; min-height: 0; align-content: flex-start; }
-    .repo-list.syncing { opacity: .45; }
-    .repo { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 9px 11px; transition: background .35s, border-color .35s; }
-    .repo.flash { border-color: rgba(61,220,132,.55); background: rgba(61,220,132,.07); }
-    .repo-row1 { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
-    .repo-name { font-family: var(--mono); font-size: 12px; color: var(--fg-2); }
-    .repo-row2 { display: flex; align-items: center; gap: 5px; margin-top: 7px; min-height: 18px; }
-    .pill { font-family: var(--mono); font-size: 10px; line-height: 1; padding: 4px 7px; border-radius: 6px; border: 1px solid transparent; white-space: nowrap; }
-    .pill.branch { color: var(--muted-fg); background: var(--muted); }
     .pill.clean  { color: var(--green); background: var(--green-soft); border-color: rgba(61,220,132,.22); }
-    .pill.ahead  { color: var(--green); background: var(--green-soft); }
     .pill.dirty  { color: var(--amber); background: rgba(227,179,65,.12); border-color: rgba(227,179,65,.24); }
-    .pill.behind { color: var(--muted-fg); background: var(--muted); }
-    .repo .who { font-family: var(--mono); font-size: 9.5px; color: var(--faint); margin-left: auto; }
-    .phone-cta { margin: 4px 8px 12px; padding: 10px; text-align: center; background: var(--green); color: #06140c; border-radius: 10px; font-family: var(--mono); font-size: 11.5px; font-weight: 600; transition: opacity .25s; }
-    .phone-cta.busy { opacity: .75; }
 
     /* Section shell — editorial two-column: heading rail (left) + content (right). */
     section { padding: 60px 0; border-top: 1px solid var(--border); }
@@ -280,20 +262,13 @@
         <div class="phone-wrap" aria-hidden="true">
           <div class="phone">
             <div class="phone-screen">
-              <div class="phone-top">
-                <div class="ttl"><img src="favicon.svg" alt="" /> RepoYeti</div>
-                <div class="cnt">7 repos</div>
-              </div>
-              <div class="repo-list" id="demo-grid">
-                <div class="repo"><div class="repo-row1"><span class="repo-name">api-gateway</span><span class="who">work</span></div><div class="repo-row2"><span class="pill branch">main</span><span class="pill dirty">● dirty</span><span class="pill behind">↓2</span></div></div>
-                <div class="repo"><div class="repo-row1"><span class="repo-name">web-dashboard</span><span class="who">work</span></div><div class="repo-row2"><span class="pill branch">feat/login</span><span class="pill ahead">↑3</span></div></div>
-                <div class="repo"><div class="repo-row1"><span class="repo-name">infra-cdk</span><span class="who">work</span></div><div class="repo-row2"><span class="pill branch">main</span><span class="pill clean">✓ clean</span></div></div>
-                <div class="repo"><div class="repo-row1"><span class="repo-name">side-project</span><span class="who">personal</span></div><div class="repo-row2"><span class="pill branch">main</span><span class="pill dirty">● dirty</span></div></div>
-                <div class="repo"><div class="repo-row1"><span class="repo-name">docs-site</span><span class="who">personal</span></div><div class="repo-row2"><span class="pill branch">main</span><span class="pill behind">↓1</span></div></div>
-                <div class="repo"><div class="repo-row1"><span class="repo-name">payments-api</span><span class="who">work</span></div><div class="repo-row2"><span class="pill branch">main</span><span class="pill ahead">↑1</span></div></div>
-                <div class="repo"><div class="repo-row1"><span class="repo-name">mobile-app</span><span class="who">personal</span></div><div class="repo-row2"><span class="pill branch">main</span><span class="pill clean">✓ clean</span></div></div>
-              </div>
-              <div class="phone-cta" id="demo-fetch">↻ Fetch all</div>
+              <!-- The actual app, recorded against the demo workspace by
+                   scripts/refresh-screenshots.ts. This used to be a hand-written HTML
+                   imitation of the repo grid, which meant the first thing a visitor saw
+                   was a drawing of the product rather than the product. -->
+              <img class="phone-demo" src="demo.gif"
+                   alt="RepoYeti on a phone: opening a repo, viewing a Monaco diff of a changed file, then the commit graph with its activity chart"
+                   width="400" height="850" />
             </div>
           </div>
         </div>
@@ -451,67 +426,6 @@
     </div>
   </footer>
 
-  <script>
-    /* Auto-playing demo in the hero phone: fetch-all → drift shows up → pull/commit/push → all green, then loops.
-       Pure simulation, no network. Respects prefers-reduced-motion (leaves the static grid). */
-    (function () {
-      var grid = document.getElementById("demo-grid");
-      var btn = document.getElementById("demo-fetch");
-      if (!grid || !btn) return;
-
-      var base = [
-        { n: "api-gateway",   who: "work",     b: "main",      dirty: true,  a: 0, be: 2 },
-        { n: "web-dashboard", who: "work",     b: "feat/login", dirty: false, a: 3, be: 0 },
-        { n: "infra-cdk",     who: "work",     b: "main",      dirty: false, a: 0, be: 0 },
-        { n: "side-project",  who: "personal", b: "main",      dirty: true,  a: 0, be: 0 },
-        { n: "docs-site",     who: "personal", b: "main",      dirty: false, a: 0, be: 1 },
-        { n: "payments-api",  who: "work",     b: "main",      dirty: false, a: 1, be: 0 },
-        { n: "mobile-app",    who: "personal", b: "main",      dirty: false, a: 0, be: 0 }
-      ];
-      var state = clone(base);
-
-      function clone(s) { return s.map(function (r) { var o = {}; for (var k in r) o[k] = r[k]; return o; }); }
-      function pill(c, t) { return '<span class="pill ' + c + '">' + t + "</span>"; }
-      function rowHTML(r) {
-        var p = pill("branch", r.b);
-        if (r.dirty) p += pill("dirty", "● dirty");
-        if (r.a > 0) p += pill("ahead", "↑" + r.a);
-        if (r.be > 0) p += pill("behind", "↓" + r.be);
-        if (!r.dirty && r.a === 0 && r.be === 0) p += pill("clean", "✓ clean");
-        return '<div class="repo" data-n="' + r.n + '"><div class="repo-row1"><span class="repo-name">' +
-          r.n + '</span><span class="who">' + r.who + '</span></div><div class="repo-row2">' + p + "</div></div>";
-      }
-      function render() { grid.innerHTML = state.map(rowHTML).join(""); }
-      function get(n) { for (var i = 0; i < state.length; i++) if (state[i].n === n) return state[i]; }
-      function flash(n) { var el = grid.querySelector('[data-n="' + n + '"]'); if (el) { el.classList.add("flash"); setTimeout(function () { el.classList.remove("flash"); }, 750); } }
-
-      render();
-      if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-
-      var sleep = function (ms) { return new Promise(function (r) { setTimeout(r, ms); }); };
-      (async function loop() {
-        for (;;) {
-          await sleep(2600);
-          btn.classList.add("busy"); btn.textContent = "↻ Fetching…"; grid.classList.add("syncing");
-          await sleep(1200);
-          grid.classList.remove("syncing"); btn.classList.remove("busy"); btn.textContent = "↻ Fetch all";
-          get("api-gateway").be = 4; get("web-dashboard").be = 1; render(); flash("api-gateway"); flash("web-dashboard");
-          await sleep(2200);
-          get("api-gateway").be = 0; get("web-dashboard").be = 0; get("docs-site").be = 0; render();
-          flash("api-gateway"); flash("web-dashboard"); flash("docs-site");
-          await sleep(2000);
-          get("api-gateway").dirty = false; get("api-gateway").a = 1;
-          get("side-project").dirty = false; get("side-project").a = 1;
-          render(); flash("api-gateway"); flash("side-project");
-          await sleep(1600);
-          get("api-gateway").a = 0; get("side-project").a = 0; get("web-dashboard").a = 0; render();
-          flash("api-gateway"); flash("side-project"); flash("web-dashboard");
-          await sleep(3000);
-          state = clone(base); render();
-        }
-      })();
-    })();
-  </script>
 
 </body>
 </html>
