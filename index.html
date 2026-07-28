@@ -101,13 +101,18 @@
 
     /* Phone */
     .phone-wrap { display: flex; justify-content: center; }
-    .phone { width: 300px; max-width: 100%; border-radius: 36px; background: linear-gradient(180deg, #1a1a1c, #121214); border: 1px solid var(--border-2); padding: 11px; box-shadow: 0 40px 80px -34px rgba(0,0,0,.85), inset 0 1px 0 rgba(255,255,255,.04); transform: rotate(1deg); }
-    .phone-screen { background: var(--bg); border-radius: 26px; overflow: hidden; border: 1px solid var(--border); }
+    /* Phone proportions, not a rounded box. A current handset is ~9:19.5 with a bezel a few px
+       wide; the old mock had an 11px bezel around a content-height screen, which came out nearly
+       square and read as a generic rounded rectangle. The screen drives the aspect and the shell
+       just wraps it, so the two corner radii stay concentric (outer = inner + bezel). */
+    .phone { width: 300px; max-width: 100%; border-radius: 44px; background: linear-gradient(180deg, #2a2a2e, #131315); padding: 5px; box-shadow: 0 40px 80px -34px rgba(0,0,0,.85), inset 0 1px 0 rgba(255,255,255,.06); }
+    .phone-screen { aspect-ratio: 9 / 19.5; background: var(--bg); border-radius: 39px; overflow: hidden; display: flex; flex-direction: column; }
     .phone-top { display: flex; align-items: center; justify-content: space-between; padding: 14px 15px 12px; border-bottom: 1px solid var(--border); }
     .phone-top .ttl { display: flex; align-items: center; gap: 8px; font-weight: 620; font-size: 13.5px; }
     .phone-top .ttl img { width: 17px; height: 17px; border-radius: 50%; }
     .phone-top .cnt { font-family: var(--mono); font-size: 10.5px; color: var(--faint); }
-    .repo-list { padding: 8px; display: flex; flex-direction: column; gap: 7px; transition: opacity .3s; }
+    /* Fills the taller screen and pushes the CTA to the bottom edge, the way the real app sits. */
+    .repo-list { padding: 8px; display: flex; flex-direction: column; gap: 7px; transition: opacity .3s; flex: 1 1 auto; min-height: 0; align-content: flex-start; }
     .repo-list.syncing { opacity: .45; }
     .repo { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 9px 11px; transition: background .35s, border-color .35s; }
     .repo.flash { border-color: rgba(61,220,132,.55); background: rgba(61,220,132,.07); }
@@ -151,8 +156,21 @@
     .wontdo .x { width: 18px; height: 18px; flex: none; border-radius: 50%; display: grid; place-items: center; color: var(--red); background: var(--red-soft); border: 1px solid rgba(242,114,109,.28); font-size: 10px; font-weight: 700; }
 
     /* real app screenshots (phone-framed) */
-    .shot { width: 316px; max-width: 100%; margin: 0 auto; border-radius: 34px; background: linear-gradient(180deg, #1a1a1c, #121214); border: 1px solid var(--border-2); padding: 10px; box-shadow: 0 40px 80px -34px rgba(0,0,0,.85), inset 0 1px 0 rgba(255,255,255,.04); }
-    .shot img { width: 100%; display: block; border-radius: 25px; }
+    /* Phone frame for the phone captures — same thin-bezel treatment as the hero mock. */
+    .shot { width: 300px; max-width: 100%; margin: 0 auto; border-radius: 44px; background: linear-gradient(180deg, #2a2a2e, #131315); padding: 5px; box-shadow: 0 40px 80px -34px rgba(0,0,0,.85), inset 0 1px 0 rgba(255,255,255,.06); }
+    .shot img { width: 100%; display: block; border-radius: 39px; }
+
+    /* Desktop captures are 1440px wide. Squeezing one into the 300px phone frame made it
+       unreadable, so it gets its own full-width frame with browser-ish (not phone) rounding,
+       and its section stacks instead of sitting in a 0.8/1.2 column split. */
+    .shot-wide { display: none; }
+    .shot-wide img { width: 100%; display: block; border-radius: 12px; border: 1px solid var(--border); box-shadow: 0 30px 70px -36px rgba(0,0,0,.85); }
+    @media (min-width: 901px) {
+      .shot { display: none; }
+      .shot-wide { display: block; }
+      .sec-shot .sec-grid { grid-template-columns: 1fr; gap: 30px; }
+      .sec-shot .rail { max-width: 68ch; }
+    }
 
     /* mockup chrome */
     .panel { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; box-shadow: 0 24px 60px -34px rgba(0,0,0,.8); }
@@ -264,7 +282,7 @@
             <div class="phone-screen">
               <div class="phone-top">
                 <div class="ttl"><img src="favicon.svg" alt="" /> RepoYeti</div>
-                <div class="cnt">5 repos</div>
+                <div class="cnt">7 repos</div>
               </div>
               <div class="repo-list" id="demo-grid">
                 <div class="repo"><div class="repo-row1"><span class="repo-name">api-gateway</span><span class="who">work</span></div><div class="repo-row2"><span class="pill branch">main</span><span class="pill dirty">● dirty</span><span class="pill behind">↓2</span></div></div>
@@ -272,6 +290,8 @@
                 <div class="repo"><div class="repo-row1"><span class="repo-name">infra-cdk</span><span class="who">work</span></div><div class="repo-row2"><span class="pill branch">main</span><span class="pill clean">✓ clean</span></div></div>
                 <div class="repo"><div class="repo-row1"><span class="repo-name">side-project</span><span class="who">personal</span></div><div class="repo-row2"><span class="pill branch">main</span><span class="pill dirty">● dirty</span></div></div>
                 <div class="repo"><div class="repo-row1"><span class="repo-name">docs-site</span><span class="who">personal</span></div><div class="repo-row2"><span class="pill branch">main</span><span class="pill behind">↓1</span></div></div>
+                <div class="repo"><div class="repo-row1"><span class="repo-name">payments-api</span><span class="who">work</span></div><div class="repo-row2"><span class="pill branch">main</span><span class="pill ahead">↑1</span></div></div>
+                <div class="repo"><div class="repo-row1"><span class="repo-name">mobile-app</span><span class="who">personal</span></div><div class="repo-row2"><span class="pill branch">main</span><span class="pill clean">✓ clean</span></div></div>
               </div>
               <div class="phone-cta" id="demo-fetch">↻ Fetch all</div>
             </div>
@@ -319,21 +339,23 @@
     </section>
 
     <!-- GIT GRAPH -->
-    <section id="graph">
+    <section id="graph" class="sec-shot">
       <div class="wrap sec-grid">
         <div class="rail"><p class="kicker">History</p><h2>The commit graph, like you get on desktop.</h2><p class="prose" style="margin-top:14px">Branches get their own lanes, merges connect back up, and your uncommitted changes sit right at the top. It's your actual <span class="mono">git log</span>, drawn out — not a flat list of messages.</p></div>
         <div class="body">
-          <div class="shot"><picture><source media="(min-width: 900px)" srcset="shots/graph-desktop.png" /><img src="shots/graph-mobile.png" alt="Git-graph history in the RepoYeti app — commit-activity chart above commit lanes with a branch and a merge" loading="lazy" /></picture></div>
+          <div class="shot"><img src="shots/graph-mobile.png" alt="Git-graph history in the RepoYeti app on a phone — commit-activity chart above commit lanes with a branch and a merge" loading="lazy" /></div>
+          <div class="shot-wide"><img src="shots/graph-desktop.png" alt="Git-graph history in the RepoYeti app — commit-activity chart above commit lanes with a branch and a merge" loading="lazy" /></div>
         </div>
       </div>
     </section>
 
     <!-- MONACO DIFF -->
-    <section id="diff">
+    <section id="diff" class="sec-shot">
       <div class="wrap sec-grid">
         <div class="rail"><p class="kicker">Viewer &amp; diffs</p><h2>It's the actual VS Code editor.</h2><p class="prose" style="margin-top:14px">Open a file and you get real Monaco — syntax highlighting, proper diffs against HEAD, and the unchanged parts folded out of the way. Need to fix a typo? Edit it and save, right there.</p></div>
         <div class="body">
-          <div class="shot"><picture><source media="(min-width: 900px)" srcset="shots/diff-desktop.png" /><img src="shots/diff-mobile.png" alt="Monaco diff viewer in the RepoYeti app — syntax highlighting with added and removed lines" loading="lazy" /></picture></div>
+          <div class="shot"><img src="shots/diff-mobile.png" alt="Monaco diff viewer in the RepoYeti app on a phone — syntax highlighting with added and removed lines" loading="lazy" /></div>
+          <div class="shot-wide"><img src="shots/diff-desktop.png" alt="Monaco diff viewer in the RepoYeti app — syntax highlighting with added and removed lines" loading="lazy" /></div>
         </div>
       </div>
     </section>
@@ -442,7 +464,9 @@
         { n: "web-dashboard", who: "work",     b: "feat/login", dirty: false, a: 3, be: 0 },
         { n: "infra-cdk",     who: "work",     b: "main",      dirty: false, a: 0, be: 0 },
         { n: "side-project",  who: "personal", b: "main",      dirty: true,  a: 0, be: 0 },
-        { n: "docs-site",     who: "personal", b: "main",      dirty: false, a: 0, be: 1 }
+        { n: "docs-site",     who: "personal", b: "main",      dirty: false, a: 0, be: 1 },
+        { n: "payments-api",  who: "work",     b: "main",      dirty: false, a: 1, be: 0 },
+        { n: "mobile-app",    who: "personal", b: "main",      dirty: false, a: 0, be: 0 }
       ];
       var state = clone(base);
 
