@@ -1,0 +1,26 @@
+# RepoYeti
+
+> A little daemon on your computer, a dashboard on your phone. Fetch, commit, and push from anywhere — with a live repo grid, git-graph history, Monaco diffs, and AI Smart Commit.
+
+RepoYeti runs a small daemon on your machine, finds every git repo you have, and serves a dashboard to your phone over a private tunnel. It's built for the moment you're away from your desk and something needs a git command right now, so you're not typing SSH keys into a phone keyboard or waiting until you get home. The dangerous git operations are deliberately left out — no force-push, no `reset --hard`, no rebase — and pulls are fast-forward-only.
+
+## Key facts
+- A small daemon runs on your computer, finds every git repo you have, and serves a dashboard to your phone; core git management is fully self-hosted and offline, no LunarWerx account required.
+- Live repo grid: branch, dirty, ahead/behind status for every repo, updated the moment something changes; fetch every repo in one tap.
+- Git-graph commit history with lanes and merges, lazily paged, each commit showing a files-and-lines delta and a commit-activity chart.
+- Real Monaco (VS Code) diff viewer: syntax highlighting, HEAD diffs, and inline edit-and-save.
+- Smart Commit (AI, bring-your-own-key) splits a messy working tree into clean commits. Groq is the suggested free provider (about 30 seconds to set up); OpenAI, Claude, Gemini, OpenRouter, and DeepSeek also work. Keys are kept in the OS keychain and never leave the daemon.
+- Deliberately missing the dangerous git operations: no force-push, no `reset --hard`, no rebase; pulls are fast-forward-only and stop on a diverged branch instead of merging.
+- Per-repo git identities, so commits use the right author automatically.
+- Remote access opens a private Cloudflare tunnel (`repoyeti start --tunnel`) and prints a QR code; requires `cloudflared` installed separately. Sign-in is "Sign in with Connections" (OIDC/PKCE); cloud sign-in and settings sync are optional and off by default.
+- AI agents: `repoyeti mcp` exposes local repos plus guarded remote commit/sync over MCP; the full HTTP API is at `GET /api/openapi.json`.
+- Privacy: pings Connections Studio at most once a day for an update check (install id, version, coarse OS tag; the server also derives and stores a coarse location, your network's ASN, locale, and a truncated user agent from that ping, but never an IP address, code, file paths, usernames, or hostnames); opt out with `REPOYETI_NO_PING=1`.
+- Built with Bun, `bun:sqlite`, Hono, and `simple-git` on the daemon; Vue 3 + Tailwind PWA on the dashboard.
+- MIT licensed, © LunarWerx Studios.
+
+## Links
+- Home: https://repoyeti.com/
+- Source code: https://github.com/LunarWerxs/RepoYeti
+- Download: https://github.com/LunarWerxs/RepoYeti/releases
+- Changelog: https://github.com/LunarWerxs/RepoYeti/blob/main/CHANGELOG.md
+- License: https://github.com/LunarWerxs/RepoYeti/blob/main/LICENSE

@@ -258,6 +258,107 @@
     })(window, document, 'ak_36f13e30bc7ddcde24f7adb2086dd46b03b3');
   </script>
   <!-- End ARGUS Analytics Pixel -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "SoftwareApplication",
+        "@id": "https://repoyeti.com/#app",
+        "name": "RepoYeti",
+        "description": "A little daemon on your computer, a dashboard on your phone. Fetch, commit, and push from anywhere — with a live repo grid, git-graph history, Monaco diffs, and AI Smart Commit.",
+        "applicationCategory": "DeveloperApplication",
+        "url": "https://repoyeti.com/",
+        "image": "https://repoyeti.com/og.png",
+        "softwareHelp": {
+          "@type": "CreativeWork",
+          "url": "https://github.com/LunarWerxs/RepoYeti"
+        },
+        "featureList": [
+          "Live repo grid showing which repos are dirty, ahead, or behind, updated live",
+          "Fetch every repo in one tap",
+          "Git-graph commit history with lanes and merges, with uncommitted changes shown at the top",
+          "Real Monaco diff viewer with syntax highlighting, diffs against HEAD, and inline edit and save",
+          "AI Smart Commit that reads a messy diff and suggests splitting it into clean commits (bring your own key)",
+          "Pin and hide repos",
+          "The right git identity for each repo, automatically",
+          "Fast-forward-only pulls with no force-push, no hard reset, and no rebase from the phone"
+        ],
+        "author": { "@id": "https://lunarwerx.com/#org" },
+        "publisher": { "@id": "https://lunarwerx.com/#org" }
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://lunarwerx.com/#org",
+        "name": "LunarWerx Studios",
+        "url": "https://lunarwerx.com/",
+        "logo": "https://lunarwerx.com/logowhite.webp",
+        "sameAs": ["https://github.com/LunarWerxs"]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://repoyeti.com/#site",
+        "name": "RepoYeti",
+        "url": "https://repoyeti.com/",
+        "publisher": { "@id": "https://lunarwerx.com/#org" }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://repoyeti.com/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is RepoYeti?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "RepoYeti is a small daemon that runs on your computer, finds every git repo you have, and serves a dashboard to your phone. You can fetch, commit, push, and read history and diffs from wherever you are. It runs on your machine, so your code stays there."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does my code ever leave my computer?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No — RepoYeti runs on your machine, and your code never leaves it. The daemon pings Connections Studio at most once a day for an update check, sending a random install id, the version, and a coarse OS tag; from that ping the server also derives and stores a coarse location, your network's ASN, locale, and a truncated user agent, but never an IP address, hostname, username, file path, or anything about your repos."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I force-push or run git reset --hard from RepoYeti?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. Force-push and reset --hard aren't in the app at all — a phone is a lousy place to rewrite history. Pulls are fast-forward-only and stop instead of merging if your branch has diverged, and there's no rebase from your phone either."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What AI provider does Smart Commit use?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Smart Commit is bring-your-own-key — there's no bundled key. Groq is the suggested provider (free, fast, about 30 seconds to set up), but you can add OpenAI, Claude, Gemini, OpenRouter, or DeepSeek instead. Your key stays in your OS keychain and never leaves the daemon."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is RepoYeti open source?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. RepoYeti is MIT licensed, copyright LunarWerx Studios, and the bundled file-type icons come from vscode-icons under a separate CC BY-SA license. The daemon runs on Bun, bun:sqlite, Hono, and simple-git, while the dashboard is a Vue 3 + Tailwind PWA."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do I use RepoYeti from my phone?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Run repoyeti start --tunnel on your computer to open a private Cloudflare tunnel and get a QR code for your phone. Sign-in returns through RepoYeti's own callback at app.repoyeti.com, which only works while your daemon is running — your dashboard and git traffic never pass through it."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
 
@@ -442,6 +543,32 @@
 <span class="p">$</span> repoyeti start               <span class="c"># start it, get a link for your phone</span></div>
           </div>
           <p class="stackline"><span>Bun</span> · <span>bun:sqlite</span> · <span>Hono</span> · <span>simple-git</span> · <span>Vue 3</span> + <span>Tailwind</span> PWA</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq">
+      <div class="wrap sec-grid">
+        <div class="rail"><p class="kicker">FAQ</p><h2>What people ask first.</h2></div>
+        <div class="body">
+          <h3>What is RepoYeti?</h3>
+          <p class="prose">RepoYeti is a small daemon that runs on your computer, finds every git repo you have, and serves a dashboard to your phone. You can fetch, commit, push, and read history and diffs from wherever you are. It runs on your machine, so your code stays there.</p>
+
+          <h3 style="margin-top:22px">Does my code ever leave my computer?</h3>
+          <p class="prose">No — RepoYeti runs on your machine, and your code never leaves it. The daemon pings Connections Studio at most once a day for an update check, sending a random install id, the version, and a coarse OS tag; from that ping the server also derives and stores a coarse location, your network's ASN, locale, and a truncated user agent, but never an IP address, hostname, username, file path, or anything about your repos.</p>
+
+          <h3 style="margin-top:22px">Can I force-push or run <span class="mono">git reset --hard</span> from RepoYeti?</h3>
+          <p class="prose">No. Force-push and <span class="mono">reset --hard</span> aren't in the app at all — a phone is a lousy place to rewrite history. Pulls are fast-forward-only and stop instead of merging if your branch has diverged, and there's no rebase from your phone either.</p>
+
+          <h3 style="margin-top:22px">What AI provider does Smart Commit use?</h3>
+          <p class="prose">Smart Commit is bring-your-own-key — there's no bundled key. Groq is the suggested provider (free, fast, about 30 seconds to set up), but you can add OpenAI, Claude, Gemini, OpenRouter, or DeepSeek instead. Your key stays in your OS keychain and never leaves the daemon.</p>
+
+          <h3 style="margin-top:22px">Is RepoYeti open source?</h3>
+          <p class="prose">Yes. RepoYeti is MIT licensed, copyright LunarWerx Studios, and the bundled file-type icons come from vscode-icons under a separate CC BY-SA license. The daemon runs on Bun, bun:sqlite, Hono, and simple-git, while the dashboard is a Vue 3 + Tailwind PWA.</p>
+
+          <h3 style="margin-top:22px">How do I use RepoYeti from my phone?</h3>
+          <p class="prose">Run <span class="mono">repoyeti start --tunnel</span> on your computer to open a private Cloudflare tunnel and get a QR code for your phone. Sign-in returns through RepoYeti's own callback at <span class="mono">app.repoyeti.com</span>, which only works while your daemon is running — your dashboard and git traffic never pass through it.</p>
         </div>
       </div>
     </section>
