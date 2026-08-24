@@ -1,0 +1,86 @@
+# RepoYeti: full reference
+
+> A little daemon on your computer, a dashboard on your phone. Fetch, commit, and push from anywhere, with a live repo grid, git-graph history, Monaco diffs, and AI Smart Commit.
+
+Current release: v0.21.5. License: MIT. Copyright LunarWerx Studios. Free and open source; no purchase, subscription, or account is required for core git management.
+
+## What it is
+
+RepoYeti is a small daemon that runs on your own computer, finds every git repository you have, and serves a mobile-friendly dashboard (a PWA) to your phone over a private tunnel. It's for the moment you're away from your desk and something needs a git command right now, so you're not typing SSH keys into a phone keyboard or waiting until you get home. Your code and repos never leave your machine; the daemon only pings home for an update check.
+
+## Who it's for
+
+Developers and small teams who already work from git and want to fetch, review, commit, and push against their real desktop repos from a phone, without SSH, without cloning a second copy onto the device, and without giving a phone the power to force-push or rewrite history.
+
+## Features
+
+- **Live repo grid.** Branch, dirty, ahead/behind status for every repo you track, updated the moment something changes on disk. Fetch every repo in one tap.
+- **Git-graph history.** Commit history with lanes and merges, lazily paged, each commit showing a files-and-lines delta and a commit-activity chart. Uncommitted changes sit at the top of the graph.
+- **Real Monaco diff viewer.** The same editor VS Code uses, syntax highlighting, diffs against HEAD, and inline edit-and-save.
+- **AI Smart Commit.** Reads a messy working tree and suggests splitting it into clean, logically grouped commits. Bring your own API key; six providers are supported, Groq (free, about 30 seconds to set up), OpenAI, Claude, Gemini, OpenRouter, and DeepSeek. Keys are kept in the OS keychain and never leave the daemon.
+- **Per-repo git identities.** Commits use the right author automatically, so nothing goes out under the wrong email.
+- **Pin and hide repos** to keep the ones you actually use on top.
+- **AI agent access.** `repoyeti mcp` exposes local repos plus guarded remote commit/sync over MCP; the full HTTP API is documented at `GET /api/openapi.json`.
+
+## Safety guardrails (on purpose)
+
+RepoYeti deliberately leaves the dangerous git operations out of the app entirely:
+
+- No force-push.
+- No `git reset --hard`.
+- No rebase from the phone.
+- Pulls are fast-forward-only, a diverged branch stops and tells you instead of merging.
+- Discarding a file shows the diff first; nothing disappears silently.
+
+For anything you can't take back, the guidance is to use your laptop instead.
+
+## How it works / install
+
+It's one binary, built for macOS, Linux, and Windows. No install step or runtime is required beyond extracting the release bundle; keep the bundled `web` folder beside the executable.
+
+```
+repoyeti add-root ~/code     # where your repos live
+repoyeti start --tunnel      # start it, get a QR code for your phone
+```
+
+Remote access opens a private Cloudflare tunnel (requires `cloudflared`, installed separately) and prints a QR code. Sign-in is "Sign in with Connections" (OIDC/PKCE); cloud sign-in and settings sync are optional and off by default. Under the hood it's `simple-git` on the repos already on your disk, no custom remote, nothing to migrate. Delete RepoYeti and your repos are exactly as you left them.
+
+Built with Bun, `bun:sqlite`, Hono, and `simple-git` on the daemon; Vue 3 + Tailwind on the PWA dashboard.
+
+## Pricing
+
+RepoYeti itself is free and open source (MIT license). See `/pricing.md` for the full breakdown, including the only real out-of-pocket cost: usage of a bring-your-own AI provider for Smart Commit (Groq's free tier covers typical use).
+
+## Privacy
+
+The daemon pings Connections Studio at most once a day for an update check: a random install id, the version, and a coarse OS tag. From that ping the server also derives and stores a coarse location, the network's ASN, locale, and a truncated user agent, but never an IP address, hostname, username, file path, or anything about your repos or code. Opt out with `REPOYETI_NO_PING=1`.
+
+## Limitations
+
+- Remote access requires a separately-installed `cloudflared` binary and an internet connection for the tunnel; core git management itself is fully self-hosted and works without any LunarWerx account.
+- AI Smart Commit needs an API key from one of the six supported providers, there is no bundled key.
+- By design, RepoYeti cannot force-push, hard-reset, rebase, or perform a non-fast-forward merge from the phone. Use a desktop git client for those.
+
+## FAQ
+
+**Is RepoYeti free?** Yes, free and open source under the MIT license. No account or subscription is required for core git management; the only possible cost is bring-your-own AI provider usage for Smart Commit.
+
+**Does my code ever leave my computer?** No. RepoYeti runs on your machine and your code stays there; only the daily update-check ping leaves the daemon, and it carries no code, file paths, or repo information.
+
+**Can I force-push or run `git reset --hard` from RepoYeti?** No, neither exists in the app. Pulls are fast-forward-only, and there's no rebase from the phone either.
+
+**What AI provider does Smart Commit use?** Bring-your-own-key. Groq is the suggested free provider; OpenAI, Claude, Gemini, OpenRouter, and DeepSeek also work.
+
+**Is RepoYeti open source?** Yes, MIT licensed. Bundled file-type icons come from vscode-icons under a separate CC BY-SA license.
+
+**How is RepoYeti different from GitHub Mobile or Working Copy?** GitHub Mobile works against your remote repos on GitHub's servers (PRs, issues, notifications) and doesn't see your desktop's working tree. Working Copy is a full iOS git client but clones each repo onto the phone as a separate copy. RepoYeti instead mirrors the exact repos already on your desktop, no clone, nothing to keep in sync.
+
+## Links
+
+- Home: https://repoyeti.com/
+- Source code: https://github.com/LunarWerxs/RepoYeti
+- Download: https://github.com/LunarWerxs/RepoYeti/releases
+- Changelog: https://github.com/LunarWerxs/RepoYeti/blob/main/CHANGELOG.md
+- License: https://github.com/LunarWerxs/RepoYeti/blob/main/LICENSE
+- Pricing: https://repoyeti.com/pricing.md
+- Publisher: https://lunarwerx.com/ (LunarWerx Studios)
