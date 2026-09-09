@@ -269,7 +269,7 @@
         "description": "A little daemon on your computer, a dashboard on your phone. Fetch, commit, and push from anywhere — with a live repo grid, git-graph history, Monaco diffs, and AI Smart Commit.",
         "applicationCategory": "DeveloperApplication",
         "operatingSystem": "macOS, Linux, Windows",
-        "softwareVersion": "0.21.5",
+        "softwareVersion": "1.0.0",
         "offers": {
           "@type": "Offer",
           "price": "0",
@@ -334,7 +334,7 @@
             "name": "Does my code ever leave my computer?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "No — RepoYeti runs on your machine, and your code never leaves it. The daemon pings Connections Studio at most once a day for an update check, sending a random install id, the version, and a coarse OS tag; from that ping the server also derives and stores a coarse location, your network's ASN, locale, and a truncated user agent, but never an IP address, hostname, username, file path, or anything about your repos."
+              "text": "Not to us. RepoYeti runs on your machine, and nothing is mirrored or uploaded to RepoYeti's servers. What leaves the daemon is only what you ask it to send: Git traffic to your own remotes when you fetch, pull, or push; the diff of the changes you're committing (or the conflicted text you're resolving) to the AI provider you configured, under your own key, and only when you use Smart Commit or AI conflict resolution; and a daily update-check ping with a random install id, the version, and a coarse OS tag. From that ping the server also derives and stores a coarse location, your network's ASN, locale, and a truncated user agent, but never an IP address, hostname, username, file path, or anything about your repos."
             }
           },
           {
@@ -350,7 +350,7 @@
             "name": "What AI provider does Smart Commit use?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Smart Commit is bring-your-own-key — there's no bundled key. Groq is the suggested provider (free, fast, about 30 seconds to set up), but you can add OpenAI, Claude, Gemini, OpenRouter, or DeepSeek instead. Your key stays in your OS keychain and never leaves the daemon."
+              "text": "Smart Commit is bring-your-own-key — there's no bundled key. Groq is the suggested provider (free, fast, about 30 seconds to set up), but you can add OpenAI, Claude, Gemini, OpenRouter, or DeepSeek instead. Your key stays in your OS keychain, is never shown to the dashboard, and is sent only to the provider it belongs to."
             }
           },
           {
@@ -358,7 +358,7 @@
             "name": "Is RepoYeti open source?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Yes. RepoYeti is MIT licensed, copyright LunarWerx Studios, and the bundled file-type icons come from vscode-icons under a separate CC BY-SA license. The daemon runs on Bun, bun:sqlite, Hono, and simple-git, while the dashboard is a Vue 3 + Tailwind PWA."
+              "text": "RepoYeti 1.0.0 is source-available under PolyForm Noncommercial 1.0.0, copyright LunarWerx Studios. Use is free for purposes permitted by that license; commercial use outside those permissions requires a separate license. Earlier MIT grants remain in effect for earlier copies. Bundled file-type icons retain their separate CC BY-SA license. The daemon runs on Bun, bun:sqlite, Hono, and simple-git, while the dashboard is a Vue 3 + Tailwind PWA."
             }
           },
           {
@@ -374,7 +374,7 @@
             "name": "Is RepoYeti free?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Yes. RepoYeti is free and open source under the MIT license, copyright LunarWerx Studios. No account or subscription is required for core git management. AI Smart Commit is bring-your-own-key, so the only possible cost is whatever provider you pick — Groq, OpenAI, Claude, Gemini, OpenRouter, or DeepSeek — charges; Groq's free tier is the suggested default."
+              "text": "RepoYeti 1.0.0 is source-available under PolyForm Noncommercial 1.0.0, copyright LunarWerx Studios. Use is free for purposes permitted by that license; commercial use outside those permissions requires a separate license. Earlier MIT grants remain in effect for earlier copies. No account is required for core git management. Your chosen AI provider may charge for Smart Commit usage."
             }
           },
           {
@@ -429,7 +429,7 @@
               View on GitHub
             </a>
           </div>
-          <div class="fineprint"><span class="dot"></span> Runs on your machine. Your code never leaves it.</div>
+          <div class="fineprint"><span class="dot"></span> Runs on your machine. Nothing is uploaded to us.</div>
         </div>
         <div class="phone-wrap" aria-hidden="true">
           <div class="phone">
@@ -604,22 +604,22 @@
           <p class="prose">RepoYeti is a small daemon that runs on your computer, finds every git repo you have, and serves a dashboard to your phone. You can fetch, commit, push, and read history and diffs from wherever you are. It runs on your machine, so your code stays there.</p>
 
           <h3 style="margin-top:22px">Does my code ever leave my computer?</h3>
-          <p class="prose">No — RepoYeti runs on your machine, and your code never leaves it. The daemon pings Connections Studio at most once a day for an update check, sending a random install id, the version, and a coarse OS tag; from that ping the server also derives and stores a coarse location, your network's ASN, locale, and a truncated user agent, but never an IP address, hostname, username, file path, or anything about your repos.</p>
+          <p class="prose">Not to us. RepoYeti runs on your machine, and nothing is mirrored or uploaded to RepoYeti's servers. What leaves the daemon is only what you ask it to send: Git traffic to your own remotes when you fetch, pull, or push; the diff of the changes you're committing (or the conflicted text you're resolving) to the AI provider you configured, under your own key, and only when you use Smart Commit or AI conflict resolution; and a daily update-check ping with a random install id, the version, and a coarse OS tag. From that ping the server also derives and stores a coarse location, your network's ASN, locale, and a truncated user agent, but never an IP address, hostname, username, file path, or anything about your repos.</p>
 
           <h3 style="margin-top:22px">Can I force-push or run <span class="mono">git reset --hard</span> from RepoYeti?</h3>
           <p class="prose">No. Force-push and <span class="mono">reset --hard</span> aren't in the app at all — a phone is a lousy place to rewrite history. Pulls are fast-forward-only and stop instead of merging if your branch has diverged, and there's no rebase from your phone either.</p>
 
           <h3 style="margin-top:22px">What AI provider does Smart Commit use?</h3>
-          <p class="prose">Smart Commit is bring-your-own-key — there's no bundled key. Groq is the suggested provider (free, fast, about 30 seconds to set up), but you can add OpenAI, Claude, Gemini, OpenRouter, or DeepSeek instead. Your key stays in your OS keychain and never leaves the daemon.</p>
+          <p class="prose">Smart Commit is bring-your-own-key — there's no bundled key. Groq is the suggested provider (free, fast, about 30 seconds to set up), but you can add OpenAI, Claude, Gemini, OpenRouter, or DeepSeek instead. Your key stays in your OS keychain, is never shown to the dashboard, and is sent only to the provider it belongs to.</p>
 
           <h3 style="margin-top:22px">Is RepoYeti open source?</h3>
-          <p class="prose">Yes. RepoYeti is MIT licensed, copyright LunarWerx Studios, and the bundled file-type icons come from vscode-icons under a separate CC BY-SA license. The daemon runs on Bun, bun:sqlite, Hono, and simple-git, while the dashboard is a Vue 3 + Tailwind PWA.</p>
+          <p class="prose">RepoYeti 1.0.0 is source-available under PolyForm Noncommercial 1.0.0, copyright LunarWerx Studios. Use is free for purposes permitted by that license; commercial use outside those permissions requires a separate license. Earlier MIT grants remain in effect for earlier copies. Bundled file-type icons retain their separate CC BY-SA license. The daemon runs on Bun, bun:sqlite, Hono, and simple-git, while the dashboard is a Vue 3 + Tailwind PWA.</p>
 
           <h3 style="margin-top:22px">How do I use RepoYeti from my phone?</h3>
           <p class="prose">Run <span class="mono">repoyeti start --tunnel</span> on your computer to open a private Cloudflare tunnel and get a QR code for your phone. Sign-in returns through RepoYeti's own callback at <span class="mono">app.repoyeti.com</span>, which only works while your daemon is running — your dashboard and git traffic never pass through it.</p>
 
           <h3 style="margin-top:22px">Is RepoYeti free?</h3>
-          <p class="prose">Yes. RepoYeti is free and open source under the MIT license, copyright LunarWerx Studios. No account or subscription is required for core git management. AI Smart Commit is bring-your-own-key, so the only possible cost is whatever provider you pick — Groq, OpenAI, Claude, Gemini, OpenRouter, or DeepSeek — charges; Groq's free tier is the suggested default.</p>
+          <p class="prose">RepoYeti 1.0.0 is source-available under PolyForm Noncommercial 1.0.0, copyright LunarWerx Studios. Use is free for purposes permitted by that license; commercial use outside those permissions requires a separate license. Earlier MIT grants remain in effect for earlier copies. No account is required for core git management. Your chosen AI provider may charge for Smart Commit usage.</p>
 
           <h3 style="margin-top:22px">How is RepoYeti different from GitHub Mobile or a git client like Working Copy?</h3>
           <p class="prose">GitHub Mobile reviews, comments on, and merges pull requests against your remote repos — it doesn't see your desktop's working tree. Working Copy is a full git client for iOS, but it clones each repo onto the phone. RepoYeti instead runs a daemon on your desktop and mirrors those exact repos to your phone — no clone, no separate copy to sync.</p>
@@ -644,7 +644,7 @@
           GitHub
         </a>
         <div class="copyright">© 2026 RepoYeti · repoyeti.com</div>
-        <div class="copyright">Last updated: 2026-08-23 · v0.21.5</div>
+        <div class="copyright">Last updated: 2026-09-08 · v1.0.0</div>
       </div>
     </div>
   </footer>

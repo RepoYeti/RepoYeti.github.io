@@ -11,9 +11,11 @@ The marketing/landing site for **RepoYeti** — a self-hosted, system-wide remot
 
 ## What's here
 
-A single, self-contained static page — no build step.
+A single static page, no build step.
 
-- `index.html` — the whole page (inline CSS, no JS, no external assets/fonts).
+- `index.html`: the whole page. Inline CSS; the Inter font is loaded from Google Fonts; two small
+  inline scripts (the Connections analytics pixel loader, which skips localhost, and the dismissible
+  notice's localStorage memory) plus JSON-LD structured data.
 - `favicon.svg` — the mark.
 - `CNAME` — the custom domain GitHub Pages serves.
 - `.nojekyll` — skip Jekyll processing (we serve the file as-is).

@@ -1,16 +1,16 @@
 # RepoYeti pricing
 
-Machine-readable summary for agents and buyers. Plain-language answer: **RepoYeti is free.**
+Machine-readable summary for agents and buyers. Plain-language answer: **RepoYeti 1.0.0 is free for purposes permitted by PolyForm Noncommercial 1.0.0.** Commercial use outside those permissions requires a separate license from LunarWerx Studios.
 
 ## Product cost
 
 | Item | Cost | Notes |
 |---|---|---|
-| RepoYeti daemon + dashboard | $0 | Free and open source, MIT license, copyright LunarWerx Studios. No purchase, subscription, trial limit, or seat count. |
+| RepoYeti daemon + dashboard | $0 for permitted use | Source-available under PolyForm Noncommercial 1.0.0, copyright LunarWerx Studios. Consult the license for permitted purposes and organizational uses. |
 | Account / sign-in | $0, optional | Core git management (repo grid, fetch, commit, push, history, diffs) is fully self-hosted and works offline with no account. "Sign in with Connections" is only needed for the remote tunnel and optional settings sync, and is off by default. |
-| Source code | $0 | https://github.com/LunarWerxs/RepoYeti, MIT licensed. Bundled file-type icons are from vscode-icons under a separate CC BY-SA license. |
+| Source code | $0 | https://github.com/LunarWerxs/RepoYeti, PolyForm Noncommercial 1.0.0. Bundled file-type icons are from vscode-icons under a separate CC BY-SA license. |
 
-There is no paid tier, no usage cap, and no feature gated behind payment.
+Commercial licensing terms and pricing are arranged separately with LunarWerx Studios; no commercial price is quoted here.
 
 ## Costs the user actually bears (bring-your-own)
 
@@ -28,11 +28,11 @@ RepoYeti itself never charges for these; any cost comes from a third-party servi
 
 ## License
 
-MIT. Full text: https://github.com/LunarWerxs/RepoYeti/blob/main/LICENSE
+PolyForm Noncommercial 1.0.0, starting with RepoYeti 1.0.0. Earlier MIT grants remain in effect for earlier copies. Third-party components retain their own licenses. Full text: https://github.com/LunarWerxs/RepoYeti/blob/main/LICENSE
 
 ## Current version
 
-v0.21.5, https://github.com/LunarWerxs/RepoYeti/releases
+v1.0.0, https://github.com/LunarWerxs/RepoYeti/releases
 
 ## Links
 
