@@ -3,6 +3,8 @@
 The marketing/landing site for **RepoYeti** — a self-hosted, system-wide remote git manager
 (a background daemon + mobile PWA that lets you run git from your phone, safely).
 
+[![Discord](https://img.shields.io/badge/Discord-join_the_community-5865F2?logo=discord&logoColor=white)](https://discord.gg/PsWpeNUzhk)
+
 - **Live:** https://repoyeti.com
 - **Hosting:** GitHub Pages (this repo, `RepoYeti/RepoYeti.github.io`), served from `main` at the root.
 - **Domain:** `repoyeti.com` (custom domain in `CNAME`), DNS on Cloudflare pointing the apex + `www`
