@@ -6,11 +6,13 @@ Machine-readable summary for agents and buyers. Plain-language answer: **RepoYet
 
 | Item | Cost | Notes |
 |---|---|---|
-| RepoYeti daemon + dashboard | $0 for permitted use | Source-available under PolyForm Noncommercial 1.0.0, copyright LunarWerx Studios. Consult the license for permitted purposes and organizational uses. |
+| RepoYeti daemon + dashboard, noncommercial use | $0 | Source-available under PolyForm Noncommercial 1.0.0, copyright LunarWerx Studios. Covers personal projects, learning, research and non-profits. Consult the license for its own definitions of permitted purposes and organizational uses. Every feature; nothing is time-limited or feature-gated. |
+| RepoYeti commercial license | **US$79 per installation** | One license per machine running the daemon. The phones and browsers you read it on are not counted. Perpetual: the license does not expire. Includes 12 months of updates from purchase; after that the copy you have keeps working forever and new builds need a renewal. |
 | Account / sign-in | $0, optional | Core git management (repo grid, fetch, commit, push, history, diffs) is fully self-hosted and works offline with no account. "Sign in with Connections" is only needed for the remote tunnel and optional settings sync, and is off by default. |
 | Source code | $0 | https://github.com/LunarWerxs/RepoYeti, PolyForm Noncommercial 1.0.0. Bundled file-type icons are from vscode-icons under a separate CC BY-SA license. |
 
-Commercial licensing terms and pricing are arranged separately with LunarWerx Studios; no commercial price is quoted here.
+Volume pricing for a team is available; ask. Purchasing is opening shortly; until the checkout is
+live, reach LunarWerx Studios on Discord (https://discord.gg/PsWpeNUzhk) for a commercial license.
 
 ## Costs the user actually bears (bring-your-own)
 
