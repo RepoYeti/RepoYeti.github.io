@@ -400,10 +400,10 @@
           },
           {
             "@type": "Question",
-            "name": "Is RepoYeti code-signed? Why does Windows warn me?",
+            "name": "Is RepoYeti code-signed?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "The binaries aren't code-signed yet, so SmartScreen shows 'Windows protected your PC' on first run: More info, then Run anyway. Every release publishes a SHA256SUMS.txt, and the updater refuses any download whose hash doesn't match it."
+              "text": "Yes, from 1.0.1 on. The executable, the tray launcher and the tray scripts are Authenticode-signed as CN=LUNARWERX LLC and timestamped, so Windows names the publisher. Integrity is separate and always was: every release ships a SHA256SUMS.txt, and the updater refuses any download whose hash doesn't match it."
             }
           }
         ]
@@ -661,8 +661,8 @@
             </details>
 
             <details class="faq-item">
-              <summary>Is it signed? Why does Windows warn me?</summary>
-              <p class="prose">The binaries aren't code-signed yet, so SmartScreen shows "Windows protected your PC" on first run: <b>More info → Run anyway</b>. Every release publishes a <span class="mono">SHA256SUMS.txt</span>, and the updater refuses any download whose hash doesn't match it.</p>
+              <summary>Is it code-signed?</summary>
+              <p class="prose">Yes, from 1.0.1 on. The executable, the tray launcher and the tray scripts are Authenticode-signed as <span class="mono">CN=LUNARWERX LLC</span> and timestamped, so Windows names the publisher. Integrity is separate and always was: every release ships a <span class="mono">SHA256SUMS.txt</span>, and the updater refuses any download whose hash doesn't match it.</p>
             </details>
           </div>
         </div>
