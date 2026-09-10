@@ -1,6 +1,6 @@
 # RepoYeti pricing
 
-Machine-readable summary for agents and buyers. Plain-language answer: **RepoYeti 1.0.0 is free for purposes permitted by PolyForm Noncommercial 1.0.0.** Commercial use outside those permissions requires a separate license from LunarWerx Studios.
+Machine-readable summary for agents and buyers. Plain-language answer: **RepoYeti is free for purposes permitted by PolyForm Noncommercial 1.0.0.** Commercial use outside those permissions requires a separate license from LunarWerx Studios.
 
 ## Product cost
 
@@ -32,7 +32,7 @@ PolyForm Noncommercial 1.0.0, starting with RepoYeti 1.0.0. Earlier MIT grants r
 
 ## Current version
 
-v1.0.0, https://github.com/LunarWerxs/RepoYeti/releases
+v1.0.1, https://github.com/LunarWerxs/RepoYeti/releases
 
 ## Links
 

@@ -132,6 +132,27 @@
     .card p { color: var(--muted-fg); font-size: 14px; margin: 0; }
     .card .gi { color: var(--green); font-family: var(--mono); }
 
+    /* FAQ — collapsed. Eight answers open at once was 41% of the page's words and read as a
+       wall; a summary row per question keeps the coverage (and the FAQPage rich result) while
+       the page stays short. */
+    .faq-list { display: grid; gap: 9px; }
+    .faq-item { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); }
+    .faq-item > summary { cursor: pointer; list-style: none; padding: 14px 16px; font-size: 15.5px; font-weight: 560; color: var(--fg); display: flex; align-items: center; gap: 12px; }
+    .faq-item > summary::-webkit-details-marker { display: none; }
+    .faq-item > summary::after { content: "+"; margin-left: auto; font-family: var(--mono); font-size: 17px; color: var(--muted-fg); line-height: 1; transition: transform .16s ease; }
+    .faq-item[open] > summary::after { content: "\2212"; }
+    .faq-item > summary:hover { color: var(--green); }
+    .faq-item > summary:focus-visible { outline: 2px solid var(--green); outline-offset: -2px; border-radius: var(--radius); }
+    .faq-item .prose { padding: 0 16px 15px; margin: 0; font-size: 15.5px; }
+
+    /* comparison table */
+    .cmp { width: 100%; border-collapse: collapse; font-size: 15px; }
+    .cmp th, .cmp td { text-align: left; padding: 12px 14px; border-bottom: 1px solid var(--border); vertical-align: top; }
+    .cmp th { color: var(--muted-fg); font-weight: 560; font-size: 13px; text-transform: uppercase; letter-spacing: .04em; }
+    .cmp tr:last-child td { border-bottom: none; }
+    .cmp td:first-child { color: var(--fg); font-weight: 560; width: 34%; }
+    .cmp td:last-child { color: var(--muted-fg); }
+
     /* won't-do */
     .wontdo { list-style: none; margin: 0 0 16px; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 10px 22px; }
     .wontdo li { display: flex; align-items: center; gap: 11px; font-family: var(--mono); font-size: 13.5px; color: var(--fg-2); }
@@ -269,7 +290,7 @@
         "description": "A little daemon on your computer, a dashboard on your phone. Fetch, commit, and push from anywhere — with a live repo grid, git-graph history, Monaco diffs, and AI Smart Commit.",
         "applicationCategory": "DeveloperApplication",
         "operatingSystem": "macOS, Linux, Windows",
-        "softwareVersion": "1.0.0",
+        "softwareVersion": "1.0.1",
         "offers": {
           "@type": "Offer",
           "price": "0",
@@ -326,7 +347,7 @@
             "name": "What is RepoYeti?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "RepoYeti is a small daemon that runs on your computer, finds every git repo you have, and serves a dashboard to your phone. You can fetch, commit, push, and read history and diffs from wherever you are. It runs on your machine, so your code stays there."
+              "text": "A small daemon on your computer that finds every git repo you have and serves a dashboard to your phone: status, history, diffs, commit, push. Your code never moves."
             }
           },
           {
@@ -334,39 +355,7 @@
             "name": "Does my code ever leave my computer?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Not to us. RepoYeti runs on your machine, and nothing is mirrored or uploaded to RepoYeti's servers. What leaves the daemon is only what you ask it to send: Git traffic to your own remotes when you fetch, pull, or push; the diff of the changes you're committing (or the conflicted text you're resolving) to the AI provider you configured, under your own key, and only when you use Smart Commit or AI conflict resolution; and a daily update-check ping with a random install id, the version, and a coarse OS tag. From that ping the server also derives and stores a coarse location, your network's ASN, locale, and a truncated user agent, but never an IP address, hostname, username, file path, or anything about your repos."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Can I force-push or run git reset --hard from RepoYeti?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "No. Force-push and reset --hard aren't in the app at all — a phone is a lousy place to rewrite history. Pulls are fast-forward-only and stop instead of merging if your branch has diverged, and there's no rebase from your phone either."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "What AI provider does Smart Commit use?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Smart Commit is bring-your-own-key — there's no bundled key. Groq is the suggested provider (free, fast, about 30 seconds to set up), but you can add OpenAI, Claude, Gemini, OpenRouter, or DeepSeek instead. Your key stays in your OS keychain, is never shown to the dashboard, and is sent only to the provider it belongs to."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Is RepoYeti open source?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "RepoYeti 1.0.0 is source-available under PolyForm Noncommercial 1.0.0, copyright LunarWerx Studios. Use is free for purposes permitted by that license; commercial use outside those permissions requires a separate license. Earlier MIT grants remain in effect for earlier copies. Bundled file-type icons retain their separate CC BY-SA license. The daemon runs on Bun, bun:sqlite, Hono, and simple-git, while the dashboard is a Vue 3 + Tailwind PWA."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "How do I use RepoYeti from my phone?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Run repoyeti start --tunnel on your computer to open a private Cloudflare tunnel and get a QR code for your phone. Sign-in returns through RepoYeti's own callback at app.repoyeti.com, which only works while your daemon is running — your dashboard and git traffic never pass through it."
+              "text": "Not to us. Git traffic goes to your own remotes. AI features send only the diff you're committing, to the provider you configured, under your key, when you press the button. Beyond that, a once-a-day version check carries a random install id, the version, and a coarse OS tag. Set REPOYETI_NO_PING=1 to switch even that off."
             }
           },
           {
@@ -374,7 +363,31 @@
             "name": "Is RepoYeti free?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "RepoYeti 1.0.0 is source-available under PolyForm Noncommercial 1.0.0, copyright LunarWerx Studios. Use is free for purposes permitted by that license; commercial use outside those permissions requires a separate license. Earlier MIT grants remain in effect for earlier copies. No account is required for core git management. Your chosen AI provider may charge for Smart Commit usage."
+              "text": "Free to download and run under PolyForm Noncommercial 1.0.0: personal projects, research, education, non-profits. The source is public. Commercial use needs a separate licence from LunarWerx Studios. Nothing is time-limited or feature-gated."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I force-push or run git reset --hard from RepoYeti?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No, and not as a setting: they aren't in the app. Pulls are fast-forward-only and stop rather than merge when a branch has diverged. Rewriting history belongs at your desk."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What AI provider does Smart Commit use?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Whichever you bring. Groq is suggested (free, about three clicks); OpenAI, Claude, Gemini, OpenRouter and DeepSeek also work. Your key lives in your OS keychain and is sent only to the provider it belongs to."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do I use RepoYeti from my phone?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Run repoyeti start --tunnel. It opens a private Cloudflare tunnel and prints a QR code. Sign-in returns through app.repoyeti.com, which works only while your daemon is running; your dashboard and git traffic never pass through it."
             }
           },
           {
@@ -382,7 +395,15 @@
             "name": "How is RepoYeti different from GitHub Mobile or a git client like Working Copy?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "GitHub Mobile reviews, comments on, and merges pull requests against your remote repos — it doesn't see your desktop's working tree. Working Copy is a full git client for iOS, but it clones each repo onto the phone. RepoYeti instead runs a daemon on your desktop and mirrors those exact repos to your phone — no clone, no separate copy to sync."
+              "text": "GitHub Mobile works on repos hosted at github.com, not your desktop's working tree. Working Copy clones each repo onto the phone, a second copy to keep in sync. RepoYeti clones nothing: your desktop stays the one working tree and the phone is a window onto it."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is RepoYeti code-signed? Why does Windows warn me?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The binaries aren't code-signed yet, so SmartScreen shows 'Windows protected your PC' on first run: More info, then Run anyway. Every release publishes a SHA256SUMS.txt, and the updater refuses any download whose hash doesn't match it."
             }
           }
         ]
@@ -481,6 +502,17 @@
               <span><b>Discarding a file shows the diff first.</b> Nothing disappears on you.</span>
             </li>
           </ul>
+          <!-- The old #wontdo section said this same thing a second time, in its own band. Two
+               sections making one argument read as padding, so the list moved in here. -->
+          <ul class="wontdo" style="margin:18px 0 14px">
+            <li><span class="x">✕</span> No force push</li>
+            <li><span class="x">✕</span> No hard reset</li>
+            <li><span class="x">✕</span> No rebase from your phone</li>
+            <li><span class="x">✕</span> No non-fast-forward merge</li>
+            <li><span class="x">✕</span> No identity mix-ups</li>
+            <li><span class="x">✕</span> No keys leaving your daemon</li>
+          </ul>
+          <p class="prose muted">For anything you can't take back, use your laptop.</p>
         </div>
       </div>
     </section>
@@ -534,24 +566,6 @@
       </div>
     </section>
 
-    <!-- WON'T DO -->
-    <section id="wontdo">
-      <div class="wrap sec-grid">
-        <div class="rail"><p class="kicker">On purpose</p><h2>Things it won't do.</h2></div>
-        <div class="body">
-          <ul class="wontdo">
-            <li><span class="x">✕</span> No force push</li>
-            <li><span class="x">✕</span> No hard reset</li>
-            <li><span class="x">✕</span> No rebase from your phone</li>
-            <li><span class="x">✕</span> No non-fast-forward merge</li>
-            <li><span class="x">✕</span> No identity mix-ups</li>
-            <li><span class="x">✕</span> No keys leaving your daemon</li>
-          </ul>
-          <p class="prose muted">For anything you can't take back, use your laptop.</p>
-        </div>
-      </div>
-    </section>
-
     <!-- JUST GIT -->
     <section id="just-git">
       <div class="wrap sec-grid">
@@ -583,14 +597,24 @@
       <div class="wrap sec-grid">
         <div class="rail"><p class="kicker">Alternatives</p><h2>How it compares.</h2></div>
         <div class="body">
-          <h3>vs. GitHub Mobile</h3>
-          <p class="prose">GitHub's official app is built around pull requests, issues, and notifications on your remote repos — it doesn't show you the working tree on your desktop. RepoYeti is the opposite: a dashboard onto the exact repos and uncommitted changes already sitting on your machine.</p>
-
-          <h3 style="margin-top:22px">vs. Working Copy</h3>
-          <p class="prose">Working Copy is a full-featured git client for iOS, but it clones each repo onto the phone itself — a second copy you push and pull to keep in sync. RepoYeti doesn't clone anything; your desktop stays the one working tree, and the phone is just a window into it.</p>
-
-          <h3 style="margin-top:22px">vs. SSH and a terminal app</h3>
-          <p class="prose">An SSH client like Termius gets you a real shell and every git command that exists, including the ones you don't want fat-thumbed on a phone keyboard — <span class="mono">push --force</span>, <span class="mono">reset --hard</span>, an interactive rebase. RepoYeti trades that flexibility for a purpose-built UI that leaves those out entirely.</p>
+          <table class="cmp">
+            <tr>
+              <th>Instead of</th>
+              <th>RepoYeti</th>
+            </tr>
+            <tr>
+              <td>GitHub Mobile</td>
+              <td>Built for pull requests and issues on github.com. It never sees your desktop's working tree; RepoYeti is that working tree.</td>
+            </tr>
+            <tr>
+              <td>Working Copy</td>
+              <td>Clones each repo onto the phone, a second copy to keep in sync. RepoYeti clones nothing.</td>
+            </tr>
+            <tr>
+              <td>SSH and a terminal app</td>
+              <td>Every git command that exists, including the ones you don't want fat-thumbed. RepoYeti trades that for a UI that simply can't run them.</td>
+            </tr>
+          </table>
         </div>
       </div>
     </section>
@@ -600,29 +624,47 @@
       <div class="wrap sec-grid">
         <div class="rail"><p class="kicker">FAQ</p><h2>What people ask first.</h2></div>
         <div class="body">
-          <h3>What is RepoYeti?</h3>
-          <p class="prose">RepoYeti is a small daemon that runs on your computer, finds every git repo you have, and serves a dashboard to your phone. You can fetch, commit, push, and read history and diffs from wherever you are. It runs on your machine, so your code stays there.</p>
+          <div class="faq-list">
+            <details class="faq-item" open>
+              <summary>What is RepoYeti?</summary>
+              <p class="prose">A small daemon on your computer that finds every git repo you have and serves a dashboard to your phone: status, history, diffs, commit, push. Your code never moves.</p>
+            </details>
 
-          <h3 style="margin-top:22px">Does my code ever leave my computer?</h3>
-          <p class="prose">Not to us. RepoYeti runs on your machine, and nothing is mirrored or uploaded to RepoYeti's servers. What leaves the daemon is only what you ask it to send: Git traffic to your own remotes when you fetch, pull, or push; the diff of the changes you're committing (or the conflicted text you're resolving) to the AI provider you configured, under your own key, and only when you use Smart Commit or AI conflict resolution; and a daily update-check ping with a random install id, the version, and a coarse OS tag. From that ping the server also derives and stores a coarse location, your network's ASN, locale, and a truncated user agent, but never an IP address, hostname, username, file path, or anything about your repos.</p>
+            <details class="faq-item">
+              <summary>Does my code ever leave my computer?</summary>
+              <p class="prose">Not to us. Git traffic goes to your own remotes. AI features send only the diff you're committing, to the provider you configured, under your key, when you press the button. Beyond that, a once-a-day version check carries a random install id, the version, and a coarse OS tag. Set <span class="mono">REPOYETI_NO_PING=1</span> to switch even that off.</p>
+            </details>
 
-          <h3 style="margin-top:22px">Can I force-push or run <span class="mono">git reset --hard</span> from RepoYeti?</h3>
-          <p class="prose">No. Force-push and <span class="mono">reset --hard</span> aren't in the app at all — a phone is a lousy place to rewrite history. Pulls are fast-forward-only and stop instead of merging if your branch has diverged, and there's no rebase from your phone either.</p>
+            <details class="faq-item">
+              <summary>Is RepoYeti free?</summary>
+              <p class="prose">Free to download and run under <a href="https://polyformproject.org/licenses/noncommercial/1.0.0" target="_blank" rel="noopener">PolyForm Noncommercial 1.0.0</a>: personal projects, research, education, non-profits. The source is public. Commercial use needs a separate licence from LunarWerx Studios. Nothing is time-limited or feature-gated.</p>
+            </details>
 
-          <h3 style="margin-top:22px">What AI provider does Smart Commit use?</h3>
-          <p class="prose">Smart Commit is bring-your-own-key — there's no bundled key. Groq is the suggested provider (free, fast, about 30 seconds to set up), but you can add OpenAI, Claude, Gemini, OpenRouter, or DeepSeek instead. Your key stays in your OS keychain, is never shown to the dashboard, and is sent only to the provider it belongs to.</p>
+            <details class="faq-item">
+              <summary>Can I force-push or <span class="mono">reset --hard</span> from it?</summary>
+              <p class="prose">No, and not as a setting: they aren't in the app. Pulls are fast-forward-only and stop rather than merge when a branch has diverged. Rewriting history belongs at your desk.</p>
+            </details>
 
-          <h3 style="margin-top:22px">Is RepoYeti open source?</h3>
-          <p class="prose">RepoYeti 1.0.0 is source-available under PolyForm Noncommercial 1.0.0, copyright LunarWerx Studios. Use is free for purposes permitted by that license; commercial use outside those permissions requires a separate license. Earlier MIT grants remain in effect for earlier copies. Bundled file-type icons retain their separate CC BY-SA license. The daemon runs on Bun, bun:sqlite, Hono, and simple-git, while the dashboard is a Vue 3 + Tailwind PWA.</p>
+            <details class="faq-item">
+              <summary>What AI provider does Smart Commit use?</summary>
+              <p class="prose">Whichever you bring. Groq is suggested (free, about three clicks); OpenAI, Claude, Gemini, OpenRouter and DeepSeek also work. Your key lives in your OS keychain and is sent only to the provider it belongs to.</p>
+            </details>
 
-          <h3 style="margin-top:22px">How do I use RepoYeti from my phone?</h3>
-          <p class="prose">Run <span class="mono">repoyeti start --tunnel</span> on your computer to open a private Cloudflare tunnel and get a QR code for your phone. Sign-in returns through RepoYeti's own callback at <span class="mono">app.repoyeti.com</span>, which only works while your daemon is running — your dashboard and git traffic never pass through it.</p>
+            <details class="faq-item">
+              <summary>How do I reach it from my phone?</summary>
+              <p class="prose">Run <span class="mono">repoyeti start --tunnel</span>. It opens a private Cloudflare tunnel and prints a QR code. Sign-in returns through <span class="mono">app.repoyeti.com</span>, which works only while your daemon is running; your dashboard and git traffic never pass through it.</p>
+            </details>
 
-          <h3 style="margin-top:22px">Is RepoYeti free?</h3>
-          <p class="prose">RepoYeti 1.0.0 is source-available under PolyForm Noncommercial 1.0.0, copyright LunarWerx Studios. Use is free for purposes permitted by that license; commercial use outside those permissions requires a separate license. Earlier MIT grants remain in effect for earlier copies. No account is required for core git management. Your chosen AI provider may charge for Smart Commit usage.</p>
+            <details class="faq-item">
+              <summary>How is it different from GitHub Mobile or Working Copy?</summary>
+              <p class="prose">GitHub Mobile works on repos hosted at github.com, not your desktop's working tree. Working Copy clones each repo onto the phone, a second copy to keep in sync. RepoYeti clones nothing: your desktop stays the one working tree and the phone is a window onto it.</p>
+            </details>
 
-          <h3 style="margin-top:22px">How is RepoYeti different from GitHub Mobile or a git client like Working Copy?</h3>
-          <p class="prose">GitHub Mobile reviews, comments on, and merges pull requests against your remote repos — it doesn't see your desktop's working tree. Working Copy is a full git client for iOS, but it clones each repo onto the phone. RepoYeti instead runs a daemon on your desktop and mirrors those exact repos to your phone — no clone, no separate copy to sync.</p>
+            <details class="faq-item">
+              <summary>Is it signed? Why does Windows warn me?</summary>
+              <p class="prose">The binaries aren't code-signed yet, so SmartScreen shows "Windows protected your PC" on first run: <b>More info → Run anyway</b>. Every release publishes a <span class="mono">SHA256SUMS.txt</span>, and the updater refuses any download whose hash doesn't match it.</p>
+            </details>
+          </div>
         </div>
       </div>
     </section>
@@ -644,7 +686,7 @@
           GitHub
         </a>
         <div class="copyright">© 2026 RepoYeti · repoyeti.com</div>
-        <div class="copyright">Last updated: 2026-09-08 · v1.0.0</div>
+        <div class="copyright">Last updated: 2026-09-09 · v1.0.1</div>
       </div>
     </div>
   </footer>

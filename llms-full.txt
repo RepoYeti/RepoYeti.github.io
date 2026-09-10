@@ -2,7 +2,7 @@
 
 > A little daemon on your computer, a dashboard on your phone. Fetch, commit, and push from anywhere, with a live repo grid, git-graph history, Monaco diffs, and AI Smart Commit.
 
-Version: v1.0.0. RepoYeti 1.0.0 is source-available under PolyForm Noncommercial 1.0.0, copyright LunarWerx Studios. Use is free for purposes permitted by that license; commercial use outside those permissions requires a separate license. Earlier MIT grants remain in effect for earlier copies.
+Version: v1.0.1. RepoYeti is source-available under PolyForm Noncommercial 1.0.0, copyright LunarWerx Studios. Use is free for purposes permitted by that license; commercial use outside those permissions requires a separate license. Earlier MIT grants remain in effect for earlier copies.
 
 ## What it is
 
@@ -49,7 +49,7 @@ Built with Bun, `bun:sqlite`, Hono, and `simple-git` on the daemon; Vue 3 + Tail
 
 ## Pricing
 
-RepoYeti 1.0.0 is source-available under PolyForm Noncommercial 1.0.0, copyright LunarWerx Studios. Use is free for purposes permitted by that license; commercial use outside those permissions requires a separate license. Earlier MIT grants remain in effect for earlier copies. See /pricing.md for licensing and third-party costs.
+RepoYeti is source-available under PolyForm Noncommercial 1.0.0, copyright LunarWerx Studios. Use is free for purposes permitted by that license; commercial use outside those permissions requires a separate license. Earlier MIT grants remain in effect for earlier copies. See /pricing.md for licensing and third-party costs.
 
 ## Privacy
 
@@ -65,7 +65,7 @@ The daemon pings Connections Studio at most once a day for an update check: a ra
 
 ## FAQ
 
-**Is RepoYeti free?** RepoYeti 1.0.0 is source-available under PolyForm Noncommercial 1.0.0, copyright LunarWerx Studios. Use is free for purposes permitted by that license; commercial use outside those permissions requires a separate license. Earlier MIT grants remain in effect for earlier copies. No account is required for core git management. Your chosen AI provider may charge for Smart Commit usage.
+**Is RepoYeti free?** RepoYeti is source-available under PolyForm Noncommercial 1.0.0, copyright LunarWerx Studios. Use is free for purposes permitted by that license; commercial use outside those permissions requires a separate license. Earlier MIT grants remain in effect for earlier copies. No account is required for core git management. Your chosen AI provider may charge for Smart Commit usage.
 
 **Does my code ever leave my computer?** Not to RepoYeti. RepoYeti runs on your machine and nothing is mirrored or uploaded to its servers. What leaves the daemon is what you ask it to send: Git traffic to your own remotes; the diff of the changes you're committing, or the conflicted text you're resolving, to the AI provider you configured, under your own key, only when you use Smart Commit or AI conflict resolution; and the daily update-check ping, which carries no code, file paths, or repo information.
 
@@ -73,7 +73,9 @@ The daemon pings Connections Studio at most once a day for an update check: a ra
 
 **What AI provider does Smart Commit use?** Bring-your-own-key. Groq is the suggested free provider; OpenAI, Claude, Gemini, OpenRouter, and DeepSeek also work.
 
-**Is RepoYeti open source?** RepoYeti 1.0.0 is source-available under PolyForm Noncommercial 1.0.0, copyright LunarWerx Studios. Use is free for purposes permitted by that license; commercial use outside those permissions requires a separate license. Earlier MIT grants remain in effect for earlier copies. The noncommercial restriction means it is not an unrestricted open-source license. Bundled file-type icons retain their separate CC BY-SA license.
+**Is RepoYeti open source?** Not by the OSI definition. It is SOURCE-AVAILABLE: every line is public and auditable, but PolyForm Noncommercial 1.0.0 restricts commercial use, which an OSI-approved license may not do. Bundled file-type icons retain their separate CC BY-SA license.
+
+**Is RepoYeti code-signed?** Not yet. Windows SmartScreen shows "Windows protected your PC" on first run: choose More info, then Run anyway. Every release publishes a SHA256SUMS.txt, and the built-in updater refuses any download whose SHA-256 does not match the checksum published beside it, refuses a release with no checksum file, and verifies the new binary reports the expected version before swapping it in.
 
 **How is RepoYeti different from GitHub Mobile or Working Copy?** GitHub Mobile works against your remote repos on GitHub's servers (PRs, issues, notifications) and doesn't see your desktop's working tree. Working Copy is a full iOS git client but clones each repo onto the phone as a separate copy. RepoYeti instead mirrors the exact repos already on your desktop, no clone, nothing to keep in sync.
 
