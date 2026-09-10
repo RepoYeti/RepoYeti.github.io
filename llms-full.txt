@@ -2,7 +2,7 @@
 
 > A little daemon on your computer, a dashboard on your phone. Fetch, commit, and push from anywhere, with a live repo grid, git-graph history, Monaco diffs, and AI Smart Commit.
 
-Version: v1.0.1. RepoYeti is source-available under PolyForm Noncommercial 1.0.0, copyright LunarWerx Studios. Use is free for purposes permitted by that license; commercial use outside those permissions requires a license, priced at US$79 per installation (perpetual, including 12 months of updates) - see https://repoyeti.com/pricing.md. Earlier MIT grants remain in effect for earlier copies.
+Version: v1.0.1. RepoYeti is source-available under PolyForm Noncommercial 1.0.0, copyright LunarWerx Studios. Use is free for purposes permitted by that license; commercial use outside those permissions requires a license, priced at US$79 per installation (perpetual, including 12 months of updates) - buy at https://checkout.connections.icu/licence/3fd2c9a5-0806-428f-b0fd-4a1ff7898fcd, full terms at https://repoyeti.com/pricing.md. Checkout is handled by Connections, which is the name on the receipt. Earlier MIT grants remain in effect for earlier copies.
 
 ## What it is
 
@@ -49,7 +49,7 @@ Built with Bun, `bun:sqlite`, Hono, and `simple-git` on the daemon; Vue 3 + Tail
 
 ## Pricing
 
-RepoYeti is source-available under PolyForm Noncommercial 1.0.0, copyright LunarWerx Studios. Use is free for purposes permitted by that license; commercial use outside those permissions requires a license, priced at US$79 per installation (perpetual, including 12 months of updates) - see https://repoyeti.com/pricing.md. Earlier MIT grants remain in effect for earlier copies. See /pricing.md for licensing and third-party costs.
+RepoYeti is source-available under PolyForm Noncommercial 1.0.0, copyright LunarWerx Studios. Use is free for purposes permitted by that license; commercial use outside those permissions requires a license, priced at US$79 per installation (perpetual, including 12 months of updates) - buy at https://checkout.connections.icu/licence/3fd2c9a5-0806-428f-b0fd-4a1ff7898fcd, full terms at https://repoyeti.com/pricing.md. Checkout is handled by Connections, which is the name on the receipt. Earlier MIT grants remain in effect for earlier copies. See /pricing.md for licensing and third-party costs.
 
 ## Privacy
 
@@ -65,7 +65,7 @@ The daemon pings Connections Studio at most once a day for an update check: a ra
 
 ## FAQ
 
-**Is RepoYeti free?** RepoYeti is source-available under PolyForm Noncommercial 1.0.0, copyright LunarWerx Studios. Use is free for purposes permitted by that license; commercial use outside those permissions requires a license, priced at US$79 per installation (perpetual, including 12 months of updates) - see https://repoyeti.com/pricing.md. Earlier MIT grants remain in effect for earlier copies. No account is required for core git management. Your chosen AI provider may charge for Smart Commit usage.
+**Is RepoYeti free?** RepoYeti is source-available under PolyForm Noncommercial 1.0.0, copyright LunarWerx Studios. Use is free for purposes permitted by that license; commercial use outside those permissions requires a license, priced at US$79 per installation (perpetual, including 12 months of updates) - buy at https://checkout.connections.icu/licence/3fd2c9a5-0806-428f-b0fd-4a1ff7898fcd, full terms at https://repoyeti.com/pricing.md. Checkout is handled by Connections, which is the name on the receipt. Earlier MIT grants remain in effect for earlier copies. No account is required for core git management. Your chosen AI provider may charge for Smart Commit usage.
 
 **Does my code ever leave my computer?** Not to RepoYeti. RepoYeti runs on your machine and nothing is mirrored or uploaded to its servers. What leaves the daemon is what you ask it to send: Git traffic to your own remotes; the diff of the changes you're committing, or the conflicted text you're resolving, to the AI provider you configured, under your own key, only when you use Smart Commit or AI conflict resolution; and the daily update-check ping, which carries no code, file paths, or repo information.
 

@@ -11,8 +11,11 @@ Machine-readable summary for agents and buyers. Plain-language answer: **RepoYet
 | Account / sign-in | $0, optional | Core git management (repo grid, fetch, commit, push, history, diffs) is fully self-hosted and works offline with no account. "Sign in with Connections" is only needed for the remote tunnel and optional settings sync, and is off by default. |
 | Source code | $0 | https://github.com/LunarWerxs/RepoYeti, PolyForm Noncommercial 1.0.0. Bundled file-type icons are from vscode-icons under a separate CC BY-SA license. |
 
-Volume pricing for a team is available; ask. Purchasing is opening shortly; until the checkout is
-live, reach LunarWerx Studios on Discord (https://discord.gg/PsWpeNUzhk) for a commercial license.
+Buy a commercial license:
+https://checkout.connections.icu/licence/3fd2c9a5-0806-428f-b0fd-4a1ff7898fcd
+
+Checkout is handled by Connections, which is the name that appears on the receipt and the card
+statement. Volume pricing for a team is available; ask on Discord (https://discord.gg/PsWpeNUzhk).
 
 ## Costs the user actually bears (bring-your-own)
 
