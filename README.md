@@ -1,6 +1,6 @@
 # repoyeti.com
 
-The marketing/landing site for **RepoYeti** — a self-hosted, system-wide remote git manager
+The marketing/landing site for **RepoYeti** - a self-hosted, system-wide remote git manager
 (a background daemon + mobile PWA that lets you run git from your phone, safely).
 
 [![Discord](https://img.shields.io/badge/Discord-join_the_community-5865F2?logo=discord&logoColor=white)](https://discord.gg/PsWpeNUzhk)
@@ -21,9 +21,9 @@ A single static page, no build step.
 - `fonts/`: the two Inter `wght` subsets (latin, latin-ext) taken from
   `@fontsource-variable/inter`, served from this origin so no third-party stylesheet sits in the
   render path. Replace them by copying the matching files out of that package.
-- `favicon.svg` — the mark.
-- `CNAME` — the custom domain GitHub Pages serves.
-- `.nojekyll` — skip Jekyll processing (we serve the file as-is).
+- `favicon.svg` - the mark.
+- `CNAME` - the custom domain GitHub Pages serves.
+- `.nojekyll` - skip Jekyll processing (we serve the file as-is).
 
 ## Editing
 
