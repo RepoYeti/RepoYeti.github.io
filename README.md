@@ -15,9 +15,12 @@ The marketing/landing site for **RepoYeti** — a self-hosted, system-wide remot
 
 A single static page, no build step.
 
-- `index.html`: the whole page. Inline CSS; the Inter font is loaded from Google Fonts; two small
+- `index.html`: the whole page. Inline CSS; the Inter font is self-hosted (see `fonts/`); two small
   inline scripts (the Connections analytics pixel loader, which skips localhost, and the dismissible
   notice's localStorage memory) plus JSON-LD structured data.
+- `fonts/`: the two Inter `wght` subsets (latin, latin-ext) taken from
+  `@fontsource-variable/inter`, served from this origin so no third-party stylesheet sits in the
+  render path. Replace them by copying the matching files out of that package.
 - `favicon.svg` — the mark.
 - `CNAME` — the custom domain GitHub Pages serves.
 - `.nojekyll` — skip Jekyll processing (we serve the file as-is).
