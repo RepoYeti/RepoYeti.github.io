@@ -7,7 +7,9 @@ name: Sync site version and download links to latest release
 #
 # The download links matter more than the label. This site offers one tile per operating
 # system now, linking the release FILE, where it used to offer a single "View on GitHub".
-# Those URLs carry the version, so without this job they 404 the day after a release.
+# The links use GitHub's stable
+# /releases/latest/download/<file> redirect, so they cannot go stale; this job keeps the
+# version label and the JSON-LD honest and proves every linked file still exists.
 #
 # Three triggers on purpose:
 #   schedule            - the safety net. Nothing has to be wired up for this to work.

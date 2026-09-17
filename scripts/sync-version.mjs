@@ -14,8 +14,9 @@
 //
 // It matters more now than it used to, because the site has download buttons at all. It
 // used to offer one way in -- "View on GitHub" -- for a product that ships five archives
-// across three operating systems. They link the FILE now, one per build, and those URLs
-// carry the version. Left alone they 404 the day after a release.
+// across three operating systems. They link the FILE now, one per build, and the links use GitHub's stable /releases/latest/download/<file>
+// redirect, so they cannot go stale; what this job keeps honest is the version label, the
+// JSON-LD, and the fact that every linked file still exists in the newest release.
 //
 // So the fallback is generated rather than remembered. This runs on a schedule and on
 // demand, rewrites every place the version and the download URLs appear, and the
@@ -55,7 +56,10 @@ const DL_ASSETS = {
 };
 /** The build most people take, and the one schema.org's downloadUrl names. */
 const PRIMARY_DL = 'win-x64';
-const DL_BASE = `https://github.com/${REPO}/releases/download`;
+/** None of these filenames carry the version, so the links use GitHub's stable
+ *  /releases/latest/download/<file> redirect and can never go stale between a release
+ *  and this job running. The asset check below still catches a renamed file. */
+const DL_LATEST = `https://github.com/${REPO}/releases/latest/download`;
 
 const check = process.argv.includes('--check');
 
@@ -131,7 +135,7 @@ function rewriteDownloads(html, version, assets) {
     }
     if (!/\shref="/.test(tag)) throw new Error(`sync-version: the data-dl="${key}" link has no href to rewrite`);
     seen.add(key);
-    return tag.replace(/(\shref=")[^"]*(")/, (_m, a, b) => `${a}${DL_BASE}/v${version}/${file}${b}`);
+    return tag.replace(/(\shref=")[^"]*(")/, (_m, a, b) => `${a}${DL_LATEST}/${file}${b}`);
   });
 
   const missing = Object.keys(DL_ASSETS).filter((k) => !seen.has(k));
@@ -146,7 +150,7 @@ function rewriteDownloads(html, version, assets) {
   if (countMatches(html, ldRe) === 0) {
     throw new Error('sync-version: JSON-LD "downloadUrl" not found. Refusing to treat a missing marker as already current.');
   }
-  const primary = `${DL_BASE}/v${version}/${DL_ASSETS[PRIMARY_DL]}`;
+  const primary = `${DL_LATEST}/${DL_ASSETS[PRIMARY_DL]}`;
   return out.replace(ldRe, (_m, a, b) => `${a}${primary}${b}`);
 }
 
