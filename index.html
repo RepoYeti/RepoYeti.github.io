@@ -288,19 +288,7 @@
     }
     @media (max-width: 560px) { .nav-links { display: none; } body { font-size: 16px; } section { padding: 48px 0; } }
     @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
-  
-  /* Progressive disclosure for the specialist half of the page: the heading and its one
-     line stay visible, the body is one click away. Nothing is removed from the DOM. */
-  details.more{margin-top:18px}
-  details.more>summary{display:inline-flex;align-items:center;gap:8px;cursor:pointer;
-    list-style:none;font:inherit;font-size:.92rem;font-weight:600;opacity:.75;
-    padding:7px 13px;border:1px solid currentColor;border-radius:999px;width:auto}
-  details.more>summary::-webkit-details-marker{display:none}
-  details.more>summary::after{content:"+";font-weight:700;line-height:1}
-  details.more[open]>summary::after{content:"\2013"}
-  details.more>summary:hover{opacity:1}
-  details.more[open]>summary{margin-bottom:18px}
-</style>
+  </style>
   <!-- ARGUS Analytics Pixel (Connections, analytics.connections.icu).
        The key is a PUBLIC ingest key and is meant to ship in client JS.
        Honours DNT and Sec-GPC by itself, and is grant-by-default outside the
@@ -633,12 +621,10 @@
         <div class="body">
           <p class="prose" style="margin-bottom:18px">Every repo you have, with which are dirty, ahead or behind. Live, so it updates itself.</p>
           <div class="grid2">
-            <details class="more"><summary>What the dashboard shows</summary>
-<div class="card"><h3><span class="gi">↻</span> Fetch everything at once</h3><p>One tap checks every repo. Handy for spotting what moved overnight.</p></div>
+            <div class="card"><h3><span class="gi">↻</span> Fetch everything at once</h3><p>One tap checks every repo. Handy for spotting what moved overnight.</p></div>
             <div class="card"><h3><span class="gi">◈</span> Updates live</h3><p>Commit in your terminal and watch it show up here.</p></div>
             <div class="card"><h3><span class="gi">⚑</span> Pin and hide</h3><p>Keep the repos you actually use on top. Hide the rest.</p></div>
             <div class="card"><h3><span class="gi">⌥</span> Right identity, always</h3><p>Work email on work repos, personal on the rest. You don't have to think about it.</p></div>
-</details>
           </div>
         </div>
       </div>
