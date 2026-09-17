@@ -516,7 +516,7 @@
         <div>
           <p class="kicker">Self-hosted remote git manager</p>
           <h1>Push a hotfix from your phone.</h1>
-          <p class="lede">RepoYeti is a little daemon that runs on your computer, finds your repos, and puts them on your phone. Fetch, commit, and push from wherever you are.</p>
+          <p class="lede">A little daemon that finds your repos and puts them on your phone. Fetch, commit and push from anywhere.</p>
           <div class="hero-cta">
             <a class="btn btn-primary js-dl-primary" data-dl="win-x64" href="https://github.com/LunarWerxs/RepoYeti/releases/latest/download/repoyeti-windows-x64.exe" download aria-label="Download RepoYeti for Windows">
               <svg class="js-dl-mark" width="18" height="18" fill="currentColor" aria-hidden="true"><use href="#os-win"/></svg>
@@ -548,7 +548,7 @@
       <div class="wrap sec-grid">
         <div class="rail"><p class="kicker">Why it exists</p><h2>Your build went red. You're at dinner.</h2></div>
         <div class="body">
-          <p class="prose">You're away from your desk and something needs a git command right now. RepoYeti is for those moments, so you're not typing SSH keys into a phone keyboard or waiting until you get home.</p>
+          <p class="prose">For when something needs a git command and you are nowhere near your desk.</p>
         </div>
       </div>
     </section>
@@ -558,7 +558,7 @@
       <div class="wrap sec-grid">
         <div class="rail"><p class="kicker">What it won't let you do</p><h2>An app that can push git from your phone should scare you.</h2></div>
         <div class="body">
-          <p class="prose" style="margin-bottom:18px">So we left the dangerous parts out. There's no force-push and no <span class="mono">reset --hard</span> anywhere in it — a phone is a lousy place to rewrite history.</p>
+          <p class="prose" style="margin-bottom:18px">So the dangerous parts are absent: no force-push, no <span class="mono">reset --hard</span>. A phone is a lousy place to rewrite history.</p>
           <ul class="rules">
             <li>
               <svg class="ic" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="11" fill="rgba(61,220,132,.12)" stroke="rgba(61,220,132,.4)"/><path d="M7 12.5l3.2 3.2L17 9" stroke="#3ddc84" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -595,7 +595,7 @@
     <!-- GIT GRAPH -->
     <section id="graph" class="sec-shot">
       <div class="wrap sec-grid">
-        <div class="rail"><p class="kicker">History</p><h2>The commit graph, like you get on desktop.</h2><p class="prose" style="margin-top:14px">Branches get their own lanes, merges connect back up, and your uncommitted changes sit right at the top. It's your actual <span class="mono">git log</span>, drawn out — not a flat list of messages.</p></div>
+        <div class="rail"><p class="kicker">History</p><h2>The commit graph, like you get on desktop.</h2><p class="prose" style="margin-top:14px">Branches get lanes, merges connect back up, uncommitted work sits on top. Your actual <span class="mono">git log</span>, drawn.</p></div>
         <div class="body">
           <div class="shot"><img src="shots/graph-mobile.png" alt="Git-graph history in the RepoYeti app on a phone — commit-activity chart above commit lanes with a branch and a merge" loading="lazy" /></div>
           <div class="shot-wide"><img src="shots/graph-desktop.png" alt="Git-graph history in the RepoYeti app — commit-activity chart above commit lanes with a branch and a merge" loading="lazy" /></div>
@@ -606,7 +606,7 @@
     <!-- MONACO DIFF -->
     <section id="diff" class="sec-shot">
       <div class="wrap sec-grid">
-        <div class="rail"><p class="kicker">Viewer &amp; diffs</p><h2>It's the actual VS Code editor.</h2><p class="prose" style="margin-top:14px">Open a file and you get real Monaco — syntax highlighting, proper diffs against HEAD, and the unchanged parts folded out of the way. Need to fix a typo? Edit it and save, right there.</p></div>
+        <div class="rail"><p class="kicker">Viewer &amp; diffs</p><h2>It's the actual VS Code editor.</h2><p class="prose" style="margin-top:14px">Real Monaco: syntax highlighting, proper diffs against HEAD, unchanged parts folded away. Fix a typo and save, right there.</p></div>
         <div class="body">
           <div class="shot"><img src="shots/diff-mobile.png" alt="Monaco diff viewer in the RepoYeti app on a phone — syntax highlighting with added and removed lines" loading="lazy" /></div>
           <div class="shot-wide"><img src="shots/diff-desktop.png" alt="Monaco diff viewer in the RepoYeti app — syntax highlighting with added and removed lines" loading="lazy" /></div>
@@ -619,7 +619,7 @@
       <div class="wrap sec-grid">
         <div class="rail"><p class="kicker">Every repo, one screen</p><h2>See your whole machine at once.</h2></div>
         <div class="body">
-          <p class="prose" style="margin-bottom:18px">RepoYeti tracks every repo you've got and shows which ones are dirty, ahead, or behind. It's live, so when something changes the screen just updates. No refresh button.</p>
+          <p class="prose" style="margin-bottom:18px">Every repo you have, with which are dirty, ahead or behind. Live, so it updates itself.</p>
           <div class="grid2">
             <div class="card"><h3><span class="gi">↻</span> Fetch everything at once</h3><p>One tap checks every repo. Handy for spotting what moved overnight.</p></div>
             <div class="card"><h3><span class="gi">◈</span> Updates live</h3><p>Commit in your terminal and watch it show up here.</p></div>
@@ -635,8 +635,8 @@
       <div class="wrap sec-grid">
         <div class="rail"><p class="kicker">Smart Commit</p><h2>Let AI untangle a messy commit.</h2></div>
         <div class="body">
-          <p class="prose">You've got a dozen files touching three unrelated things. Smart Commit reads the diff and suggests splitting it into clean commits. Tweak the plan, or just let it run.</p>
-          <p class="prose" style="margin-top:12px">Bring your own key — six providers work: Groq (free, about 30 seconds to set up), OpenAI, Claude, Gemini, OpenRouter, or DeepSeek. It stays on your machine, and your code only ever reaches the model you picked.</p>
+          <p class="prose">A dozen files touching three unrelated things. Smart Commit reads the diff and suggests clean splits.</p>
+          <p class="prose" style="margin-top:12px">Bring your own key: Groq (free), OpenAI, Claude, Gemini, OpenRouter or DeepSeek. Your code only ever reaches the model you picked.</p>
         </div>
       </div>
     </section>
@@ -646,7 +646,7 @@
       <div class="wrap sec-grid">
         <div class="rail"><p class="kicker">No lock-in</p><h2>It's still just git.</h2></div>
         <div class="body">
-          <p class="prose">Under the hood it's <span class="mono">simple-git</span> working on the repos already on your disk. No custom remote, no weird history, nothing to migrate. Delete RepoYeti and your repos are exactly how you left them.</p>
+          <p class="prose">Under the hood it is <span class="mono">simple-git</span> on the repos already on your disk. Delete RepoYeti and nothing changed.</p>
         </div>
       </div>
     </section>
@@ -656,7 +656,7 @@
       <div class="wrap sec-grid">
         <div class="rail"><p class="kicker">Running it</p><h2>How to run it.</h2></div>
         <div class="body">
-          <p class="prose" style="margin-bottom:16px">It's one binary, built for macOS, Linux, and Windows. Point it at your code folders and it starts a local server, then tunnels it out so your phone can reach it. Sign in with Connections and you're in.</p>
+          <p class="prose" style="margin-bottom:16px">One binary for macOS, Linux and Windows. Point it at your code folders, sign in with Connections, and your phone can reach it.</p>
           <div class="os-tiles">
             <div class="os-tile" data-tile="win">
               <a class="os-main" data-dl="win-x64" href="https://github.com/LunarWerxs/RepoYeti/releases/latest/download/repoyeti-windows-x64.exe" download aria-label="Download RepoYeti for Windows, the single .exe">
@@ -728,13 +728,13 @@
             </div>
             <div class="card">
               <h3><span class="gi">$79</span> Commercial</h3>
-              <p>Per installation, meaning per machine running the daemon; the phones you read it on are free. Perpetual, and the price includes 12 months of updates. Your copy keeps working after that.</p>
+              <p>Per machine running the daemon; the phones are free. Perpetual, with 12 months of updates, and it keeps working after.</p>
             </div>
           </div>
           <div class="hero-cta" style="margin:0 0 16px">
             <a class="btn btn-primary" href="https://checkout.connections.icu/licence/3fd2c9a5-0806-428f-b0fd-4a1ff7898fcd" target="_blank" rel="noopener">Buy a commercial licence</a>
           </div>
-          <p class="prose muted">Checkout is handled by Connections, so that is the name you will see on the receipt. Need a volume price for a team? <a href="https://discord.gg/PsWpeNUzhk" target="_blank" rel="noopener">Ask on Discord</a>. Full terms: <a href="pricing.md">pricing.md</a>.</p>
+          <p class="prose muted">Checkout is handled by Connections, so that is the name on the receipt. Volume pricing: <a href="https://discord.gg/PsWpeNUzhk" target="_blank" rel="noopener">ask on Discord</a>. Terms: <a href="pricing.md">pricing.md</a>.</p>
         </div>
       </div>
     </section>
