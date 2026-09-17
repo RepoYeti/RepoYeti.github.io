@@ -100,31 +100,34 @@
     .btn-ghost { background: transparent; color: var(--fg); border: 1px solid var(--border-2); font-size: 14px; padding: 7px 13px; }
     .btn-ghost:hover { border-color: var(--green); color: var(--green); }
 
-    /* ── Per-OS downloads ── */
-    /* This site shipped for three operating systems and offered one link: "View on
-       GitHub". Getting the app meant finding the repo, finding Releases, and telling
-       five archives apart by filename (owner, 2026-09-16). One tile per OS now, each
-       linking the release FILE. */
-    .os-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin-top: 20px; }
-    @media (max-width: 720px){ .os-grid { grid-template-columns: 1fr; } }
-    .os-opt {
-      display: flex; flex-direction: column; gap: 5px;
-      border: 1px solid var(--border); border-radius: 9px; padding: 13px 15px;
-      background: rgba(255,255,255,0.02); color: var(--fg); text-decoration: none;
-      transition: border-color .15s, background .15s, transform .12s;
-    }
-    .os-opt:hover { border-color: var(--border-2); background: rgba(255,255,255,0.05); transform: translateY(-1px); }
-    .os-opt:active { transform: translateY(0); }
-    .os-n { display: flex; align-items: center; gap: 8px; font-size: 0.95rem; font-weight: 600; }
-    .os-n svg { flex: none; opacity: .8; }
-    .os-k { font-size: 0.79rem; color: var(--muted-fg); }
-    /* Marked by the runtime script once it knows the visitor's OS. When it cannot
-       tell, nothing is marked: a highlight that guesses wrong is worse than none. */
-    .os-opt.is-you { border-color: var(--green); background: color-mix(in oklab, var(--green) 9%, transparent); }
-    .os-opt.is-you .os-k::after { content: " · your OS"; color: var(--green); }
-    .os-alt { margin-top: 13px; display: flex; flex-wrap: wrap; gap: 6px 15px; font-size: 0.79rem; color: var(--muted-fg); }
-    .os-alt a { color: var(--muted-fg); text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--border-2); }
-    .os-alt a:hover { color: var(--green); text-decoration-color: var(--green); }
+    /* ── Downloads: platform strip under the hero button, one tile per OS in the
+       install section, the visitor's own marked by the runtime script (owner, 2026-09-16:
+       every platform visible at a glance, no OS named twice, no paragraphs). ── */
+    .dl-platforms{display:flex;flex-wrap:wrap;align-items:center;gap:6px 16px;margin-top:14px;font-size:.86rem;color:var(--muted-fg)}
+    .dl-platforms .lead{color:var(--muted-fg)}
+    .dl-platforms a{display:inline-flex;align-items:center;gap:6px;color:var(--muted-fg);text-decoration:none;padding:2px 0;border-bottom:1px solid transparent;transition:color .15s,border-color .15s}
+    .dl-platforms a:hover{color:var(--fg)}
+    .dl-platforms a.is-you{color:var(--fg);border-bottom-color:var(--green)}
+    .dl-platforms svg{width:13px;height:13px;flex:none;opacity:.85}
+    .os-tiles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:20px;text-align:left}
+    @media(max-width:720px){.os-tiles{grid-template-columns:1fr}}
+    .os-tile{display:flex;flex-direction:column;border:1px solid var(--border);border-radius:9px;background:rgba(255,255,255,0.02);transition:border-color .15s,background .15s}
+    .os-tile:hover{border-color:var(--border-2);background:rgba(255,255,255,0.05)}
+    .os-tile.is-you{border-color:var(--green);background:color-mix(in oklab, var(--green) 9%, transparent)}
+    .os-main{display:flex;flex-direction:column;gap:4px;padding:13px 15px 9px;color:var(--fg);text-decoration:none}
+    .os-h{display:flex;align-items:center;gap:8px;font-size:.95rem;font-weight:600;color:var(--fg)}
+    .os-h svg{width:15px;height:15px;flex:none;opacity:.85}
+    .os-p{font-size:.8rem;color:var(--muted-fg)}
+    .os-tile.is-you .os-p::after{content:" · your machine";color:var(--green)}
+    .os-alts{display:flex;flex-wrap:wrap;gap:4px 10px;padding:0 15px 12px;font-size:.76rem;color:var(--muted-fg)}
+    .os-alts a{color:var(--muted-fg);text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--border-2)}
+    .os-alts a:hover{color:var(--fg);text-decoration-color:var(--fg)}
+    .os-foot{margin-top:12px;font-size:.8rem;color:var(--muted-fg)}
+    .os-foot a{color:var(--muted-fg);text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--border-2)}
+    .os-foot a:hover{color:var(--fg)}
+    .nav-right .btn-icon{padding:7px;gap:0}
+    .nav-right .btn-primary{padding:7px 13px;font-size:14px;gap:7px}
+
 
     /* Nav */
     header.nav { position: sticky; top: 0; z-index: 30; backdrop-filter: saturate(150%) blur(12px); background: color-mix(in oklab, var(--bg) 80%, transparent); border-bottom: 1px solid var(--border); }
@@ -497,9 +500,10 @@
           <a href="#build">How it works</a>
           <a href="#pricing">Pricing</a>
         </nav>
-        <a class="btn btn-ghost" href="https://github.com/LunarWerxs/RepoYeti" target="_blank" rel="noopener">
-          <svg viewBox="0 0 16 16" width="17" height="17" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.6 7.6 0 012-.27c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
-          GitHub
+        <a class="btn btn-ghost btn-icon" href="https://github.com/LunarWerxs/RepoYeti" target="_blank" rel="noopener" aria-label="GitHub" title="GitHub"><svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg></a>
+        <a class="btn btn-primary js-dl-primary" data-dl="win-x64" href="https://github.com/LunarWerxs/RepoYeti/releases/download/v1.0.2/repoyeti-windows-x64.exe" download aria-label="Download RepoYeti for Windows">
+          <svg class="js-dl-mark" width="14" height="14" fill="currentColor" aria-hidden="true"><use href="#os-win"/></svg>
+          Download
         </a>
       </div>
     </div>
@@ -515,14 +519,12 @@
           <p class="lede">RepoYeti is a little daemon that runs on your computer, finds your repos, and puts them on your phone. Fetch, commit, and push from wherever you are.</p>
           <div class="hero-cta">
             <a class="btn btn-primary js-dl-primary" data-dl="win-x64" href="https://github.com/LunarWerxs/RepoYeti/releases/download/v1.0.2/repoyeti-windows-x64.exe" download aria-label="Download RepoYeti for Windows">
-              <svg class="js-dl-icon" width="18" height="18" fill="currentColor" aria-hidden="true"><use href="#os-win"/></svg>
+              <svg class="js-dl-mark" width="18" height="18" fill="currentColor" aria-hidden="true"><use href="#os-win"/></svg>
               <span class="js-dl-label">Download for Windows</span>
             </a>
-            <a class="btn btn-ghost" href="https://github.com/LunarWerxs/RepoYeti" target="_blank" rel="noopener">
-              <svg viewBox="0 0 16 16" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.6 7.6 0 012-.27c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
-              View on GitHub
-            </a>
+            <a class="btn btn-ghost" href="https://github.com/LunarWerxs/RepoYeti" target="_blank" rel="noopener">View source</a>
           </div>
+          <p class="dl-platforms"><a data-tile="win" data-dl="win-x64" href="https://github.com/LunarWerxs/RepoYeti/releases/download/v1.0.2/repoyeti-windows-x64.exe" download><svg width="13" height="13" fill="currentColor" aria-hidden="true"><use href="#os-win"/></svg>Windows</a> <a data-tile="mac" data-dl="macos-arm64" href="https://github.com/LunarWerxs/RepoYeti/releases/download/v1.0.2/repoyeti-macos-arm64.tar.gz" download><svg width="13" height="13" fill="currentColor" aria-hidden="true"><use href="#os-apple"/></svg>macOS</a> <a data-tile="linux" data-dl="linux-x64" href="https://github.com/LunarWerxs/RepoYeti/releases/download/v1.0.2/repoyeti-linux-x64.tar.gz" download><svg width="13" height="13" fill="currentColor" aria-hidden="true"><use href="#os-linux"/></svg>Linux</a></p>
           <div class="fineprint"><span class="dot"></span> Runs on your machine. Nothing is uploaded to us.</div>
         </div>
         <div class="phone-wrap" aria-hidden="true">
@@ -655,26 +657,28 @@
         <div class="rail"><p class="kicker">Running it</p><h2>How to run it.</h2></div>
         <div class="body">
           <p class="prose" style="margin-bottom:16px">It's one binary, built for macOS, Linux, and Windows. Point it at your code folders and it starts a local server, then tunnels it out so your phone can reach it. Sign in with Connections and you're in.</p>
-      <div class="os-grid">
-        <a class="os-opt" data-dl="win-x64" href="https://github.com/LunarWerxs/RepoYeti/releases/download/v1.0.2/repoyeti-windows-x64.exe" download aria-label="Download RepoYeti for Windows, a single .exe">
-          <span class="os-n"><svg width="15" height="15" fill="currentColor" aria-hidden="true"><use href="#os-win"/></svg>Windows</span>
-          <span class="os-k">One file · .exe</span>
-        </a>
-        <a class="os-opt" data-dl="macos-arm64" href="https://github.com/LunarWerxs/RepoYeti/releases/download/v1.0.2/repoyeti-macos-arm64.tar.gz" download aria-label="Download RepoYeti for macOS on Apple silicon">
-          <span class="os-n"><svg width="15" height="15" fill="currentColor" aria-hidden="true"><use href="#os-apple"/></svg>macOS</span>
-          <span class="os-k">Apple silicon · .tar.gz</span>
-        </a>
-        <a class="os-opt" data-dl="linux-x64" href="https://github.com/LunarWerxs/RepoYeti/releases/download/v1.0.2/repoyeti-linux-x64.tar.gz" download aria-label="Download RepoYeti for Linux x64">
-          <span class="os-n"><svg width="15" height="15" fill="currentColor" aria-hidden="true"><use href="#os-linux"/></svg>Linux</span>
-          <span class="os-k">x64 · .tar.gz</span>
-        </a>
-      </div>
-      <p class="os-alt">
-        <span class="js-app-version">v1.0.2</span>
-        <a data-dl="win-x64-zip" href="https://github.com/LunarWerxs/RepoYeti/releases/download/v1.0.2/repoyeti-windows-x64.zip" download>Windows folder build .zip</a>
-        <a data-dl="win-x64-tray" href="https://github.com/LunarWerxs/RepoYeti/releases/download/v1.0.2/repoyeti-windows-x64-with-tray.zip" download>&hellip; with tray .zip</a>
-        <a data-dl="sha256" href="https://github.com/LunarWerxs/RepoYeti/releases/download/v1.0.2/SHA256SUMS.txt" download>Checksums</a>
-      </p>
+          <div class="os-tiles">
+            <div class="os-tile" data-tile="win">
+              <a class="os-main" data-dl="win-x64" href="https://github.com/LunarWerxs/RepoYeti/releases/download/v1.0.2/repoyeti-windows-x64.exe" download aria-label="Download RepoYeti for Windows, the single .exe">
+                <span class="os-h"><svg width="15" height="15" fill="currentColor" aria-hidden="true"><use href="#os-win"/></svg>Windows</span>
+                <span class="os-p">.exe · one file</span>
+              </a>
+              <span class="os-alts">also <a data-dl="win-x64-zip" href="https://github.com/LunarWerxs/RepoYeti/releases/download/v1.0.2/repoyeti-windows-x64.zip" download>.zip</a> <a data-dl="win-x64-tray" href="https://github.com/LunarWerxs/RepoYeti/releases/download/v1.0.2/repoyeti-windows-x64-with-tray.zip" download>.zip with tray</a></span>
+            </div>
+            <div class="os-tile" data-tile="mac">
+              <a class="os-main" data-dl="macos-arm64" href="https://github.com/LunarWerxs/RepoYeti/releases/download/v1.0.2/repoyeti-macos-arm64.tar.gz" download aria-label="Download RepoYeti for macOS on Apple silicon">
+                <span class="os-h"><svg width="15" height="15" fill="currentColor" aria-hidden="true"><use href="#os-apple"/></svg>macOS</span>
+                <span class="os-p">Apple silicon</span>
+              </a>
+            </div>
+            <div class="os-tile" data-tile="linux">
+              <a class="os-main" data-dl="linux-x64" href="https://github.com/LunarWerxs/RepoYeti/releases/download/v1.0.2/repoyeti-linux-x64.tar.gz" download aria-label="Download RepoYeti for Linux x64">
+                <span class="os-h"><svg width="15" height="15" fill="currentColor" aria-hidden="true"><use href="#os-linux"/></svg>Linux</span>
+                <span class="os-p">x64</span>
+              </a>
+            </div>
+          </div>
+          <p class="os-foot"><span class="js-app-version">v1.0.2</span> · <a data-dl="sha256" href="https://github.com/LunarWerxs/RepoYeti/releases/download/v1.0.2/SHA256SUMS.txt" download>checksums</a> · <a href="https://github.com/LunarWerxs/RepoYeti/releases" target="_blank" rel="noopener">all releases</a></p>
           <div class="terminal" style="margin-top:20px">
             <div class="term-bar"><i class="r"></i><i class="y"></i><i class="g"></i><span class="lbl">bash</span></div>
             <div class="term-body"><span class="p">$</span> repoyeti add-root ~/code     <span class="c"># where your repos live</span>
@@ -915,84 +919,98 @@
 </script>
 <!-- /LunarWerx Discord badge -->
 <script>
-/* Keeps the download links, the version label and the JSON-LD current without a
- * redeploy, and points the big button at the visitor's own operating system.
- *
- * This page used to offer one way in -- "View on GitHub" -- for a product that ships
- * five archives across three operating systems (owner, 2026-09-16). The buttons link
- * the FILE now.
- *
- * A direct asset URL is version-pinned, so it would 404 the day a release ships. Two
- * things stop that: scripts/sync-version.mjs rewrites the baked-in URLs on a schedule
- * and refuses to write one whose asset the release does not carry, and this script
- * repairs the gap between a release and that job running. With JS off, the baked-in
- * URLs still download a real build. */
+/* Download links, version label and JSON-LD, kept current without a redeploy; the
+   big buttons follow the visitor's machine; the platform strip and the install tiles
+   mark it. The static hrefs are already direct file URLs (scripts/sync-version.mjs
+   rewrites them on every release and refuses to write one the release does not
+   carry); this repairs the gap between a release and that job. With JS off the
+   baked-in URLs still download a real build. */
 (function(){
   var REPO = "https://github.com/LunarWerxs/RepoYeti";
-  var FILES = {
-    "win-x64"     : "repoyeti-windows-x64.exe",
-    "macos-arm64" : "repoyeti-macos-arm64.tar.gz",
-    "linux-x64"   : "repoyeti-linux-x64.tar.gz",
-    "win-x64-zip" : "repoyeti-windows-x64.zip",
-    "win-x64-tray": "repoyeti-windows-x64-with-tray.zip",
-    "sha256"      : "SHA256SUMS.txt"
-  };
+  var DEFAULT_KEY = "win-x64";
+  var MODE = "os";   // "os": Windows/macOS/Linux; "winarch": one OS, x64 vs ARM64
+  function files(v){ return {
+      "win-x64": "repoyeti-windows-x64.exe",
+      "win-x64-zip": "repoyeti-windows-x64.zip",
+      "win-x64-tray": "repoyeti-windows-x64-with-tray.zip",
+      "macos-arm64": "repoyeti-macos-arm64.tar.gz",
+      "linux-x64": "repoyeti-linux-x64.tar.gz",
+      "sha256": "SHA256SUMS.txt"
+  }; }
   var LABEL = {
-    "win-x64"    : ["Download for Windows",                   "win"],
-    "macos-arm64": ["Download for macOS (Apple silicon)",     "apple"],
-    "linux-x64"  : ["Download for Linux (x64)",               "linux"]
+      "win-x64": { text: "Download for Windows", mark: "win", aria: "Windows" },
+      "macos-arm64": { text: "Download for macOS", mark: "apple", aria: "macOS (Apple silicon)" },
+      "linux-x64": { text: "Download for Linux", mark: "linux", aria: "Linux (x64)" }
+  };
+  /* tile -> which asset key to hand over; arm/x86 refine it where a build exists. */
+  var PICK = {
+      "win": { def: "win-x64" },
+      "mac": { def: "macos-arm64" },
+      "linux": { def: "linux-x64" }
   };
 
-  var state = { version: null, os: null, urls: {} };
-
-  /* The version already on the page, read off a download href rather than a separate
-     data attribute: the href is the thing that has to be right. */
-  (function(){
+  var state = { version: null, tile: null, key: null, urls: {} };
+  (function(){   // the version already on the page, read off a download href
     var a = document.querySelector("a[data-dl]");
     var m = a && (a.getAttribute("href") || "").match(/\/download\/v(\d+\.\d+\.\d+[^\/]*)\//);
     if (m) state.version = m[1];
   })();
 
-  /* Android reports Linux and iPadOS reports Mac, and there is no build for either, so
-     both fall through to null and the baked-in Windows default stands; ChromeOS too.
-     Guessing wrong hands someone an archive that cannot run. */
-  function detectOS(){
+  /* Android says Linux and iPadOS says Mac, and there is no build for either, so
+     both leave the tile null and the default stands; ChromeOS too. */
+  function detectTile(){
     var ua = navigator.userAgent || "";
     var p  = (navigator.userAgentData && navigator.userAgentData.platform) || "";
     if (/Android|iPhone|iPad|iPod|CrOS/i.test(ua)) return null;
-    if (/mac/i.test(p)   || /Mac OS X|Macintosh/i.test(ua)) return "macos-arm64";
-    if (/linux/i.test(p) || /Linux/i.test(ua))              return "linux-x64";
-    if (/win/i.test(p)   || /Windows/i.test(ua))            return "win-x64";
-    return null;
+    var win = /win/i.test(p) || /Windows/i.test(ua);
+    if (MODE === "winarch") return win ? (/\b(?:ARM64|aarch64)\b/i.test(ua) ? "arm64" : "x64") : null;
+    if (/mac/i.test(p)   || /Mac OS X|Macintosh/i.test(ua)) return "mac";
+    if (/linux/i.test(p) || /Linux/i.test(ua))              return "linux";
+    return win ? "win" : null;
   }
-
+  function pick(tile, arm){
+    var p = PICK[tile]; if (!p) return null;
+    if (arm === true  && p.arm) return p.arm;
+    if (arm === false && p.x86) return p.x86;
+    return p.def;
+  }
   function urlFor(key){
     if (state.urls[key]) return state.urls[key];              // the release said so
-    if (!state.version || !FILES[key]) return null;           // leave the baked-in href alone
-    return REPO + "/releases/download/v" + state.version + "/" + FILES[key];
+    if (!state.version) return null;                          // leave the baked-in href alone
+    var f = files(state.version)[key];
+    return f ? REPO + "/releases/download/v" + state.version + "/" + f : null;
   }
+  function all(sel){ return Array.prototype.slice.call(document.querySelectorAll(sel)); }
 
-  /* Idempotent: safe to call again as detection and the release fetch land. */
+  /* Idempotent: runs on load, again when client hints answer, again when the API does. */
   function render(){
-    var primary = state.os || "win-x64";
-    document.querySelectorAll("a.js-dl-primary").forEach(function(a){ a.setAttribute("data-dl", primary); });
-    document.querySelectorAll("a[data-dl]").forEach(function(a){
-      var href = urlFor(a.getAttribute("data-dl"));
-      if (href) a.setAttribute("href", href);
+    var key = state.key || DEFAULT_KEY, L = LABEL[key] || LABEL[DEFAULT_KEY];
+    all("a.js-dl-primary").forEach(function(a){
+      a.setAttribute("data-dl", key);
+      a.setAttribute("aria-label", "Download RepoYeti for " + L.aria);
     });
-    document.querySelectorAll(".js-dl-label").forEach(function(el){ el.textContent = LABEL[primary][0]; });
-    document.querySelectorAll(".js-dl-icon use").forEach(function(u){ u.setAttribute("href", "#os-" + LABEL[primary][1]); });
-    document.querySelectorAll("a.js-dl-primary").forEach(function(a){
-      a.setAttribute("aria-label", LABEL[primary][0].replace("Download", "Download RepoYeti"));
-    });
-    document.querySelectorAll(".os-grid a[data-dl]").forEach(function(a){
-      a.classList.toggle("is-you", state.os !== null && a.getAttribute("data-dl") === state.os);
+    all(".js-dl-label").forEach(function(el){ el.textContent = L.text; });
+    all(".js-dl-arch").forEach(function(el){ if (L.sub) el.textContent = L.sub; });
+    all(".js-dl-mark use").forEach(function(u){ u.setAttribute("href", "#os-" + L.mark); });
+    all("a[data-dl]").forEach(function(a){ var h = urlFor(a.getAttribute("data-dl")); if (h) a.setAttribute("href", h); });
+    all("[data-tile]").forEach(function(el){
+      el.classList.toggle("is-you", state.tile !== null && el.getAttribute("data-tile") === state.tile);
     });
   }
 
   try {
-    state.os = detectOS();
+    state.tile = detectTile();
+    state.key  = pick(state.tile, null);
     render();
+    var uad = navigator.userAgentData;
+    if (state.tile && uad && typeof uad.getHighEntropyValues === "function") {
+      uad.getHighEntropyValues(["architecture"]).then(function(h){
+        var arm = /arm/i.test((h && h.architecture) || "");
+        if (MODE === "winarch") { state.tile = arm ? "arm64" : "x64"; }
+        state.key = pick(state.tile, arm);
+        render();
+      }).catch(function(){});
+    }
     fetch("https://api.github.com/repos/LunarWerxs/RepoYeti/releases/latest", { headers: { "Accept": "application/vnd.github+json" } })
       .then(function(r){ return r.ok ? r.json() : null; })
       .then(function(rel){
@@ -1000,20 +1018,18 @@
         var bare = String(rel.tag_name).trim().replace(/^v/, "");
         if (!/^\d+\.\d+\.\d+/.test(bare)) return;   // never write a draft name into the page
         state.version = bare;
-        /* Prefer the URL the release itself reports over one rebuilt from a filename. */
+        var want = files(bare);   // prefer the URL the release reports over a rebuilt filename
         (rel.assets || []).forEach(function(asset){
-          Object.keys(FILES).forEach(function(key){
-            if (FILES[key] === asset.name && asset.browser_download_url) state.urls[key] = asset.browser_download_url;
-          });
+          Object.keys(want).forEach(function(k){ if (want[k] === asset.name && asset.browser_download_url) state.urls[k] = asset.browser_download_url; });
         });
         render();
-        document.querySelectorAll(".js-app-version").forEach(function(el){ el.textContent = "v" + bare; });
-        document.querySelectorAll('script[type="application/ld+json"]').forEach(function(s){
+        all(".js-app-version").forEach(function(el){ el.textContent = "v" + bare; });
+        all('script[type="application/ld+json"]').forEach(function(s){
           try {
             var data = JSON.parse(s.textContent), changed = false;
             (function walk(o){ if (o && typeof o === "object") { Object.keys(o).forEach(function(k){
               if (k === "softwareVersion") { o[k] = bare; changed = true; }
-              else if (k === "downloadUrl" && urlFor("win-x64")) { o[k] = urlFor("win-x64"); changed = true; }
+              else if (k === "downloadUrl" && urlFor(DEFAULT_KEY)) { o[k] = urlFor(DEFAULT_KEY); changed = true; }
               else { walk(o[k]); } }); } })(data);
             if (changed) s.textContent = JSON.stringify(data);
           } catch (e) {}
