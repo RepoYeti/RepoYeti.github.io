@@ -289,7 +289,7 @@
     @media (max-width: 560px) { .nav-links { display: none; } body { font-size: 16px; } section { padding: 48px 0; } }
     @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
   </style>
-  <!-- ARGUS Analytics Pixel (Connections, analytics.connections.icu).
+  <!-- ARGUS Analytics Pixel (Connections, analytics.connectionsapi.com).
        The key is a PUBLIC ingest key and is meant to ship in client JS.
        Honours DNT and Sec-GPC by itself, and is grant-by-default outside the
        EU/EEA/UK/CH (the pixel is stamped per-visitor at the edge). localhost
@@ -318,7 +318,7 @@
         j.async = true;
         j.id = 'argus-pixel';
         j.type = 'text/javascript';
-        j.src = 'https://analytics.connections.icu/pixel.js?v=2';
+        j.src = 'https://analytics.connectionsapi.com/pixel.js?v=2';
         j.onerror = function () { warn('[ARGUS] pixel.js failed to load (check CSP script-src / network / ad-blocker)'); };
         var mount = d.head || d.getElementsByTagName('head')[0] || d.documentElement || d.body;
         if (!mount) { warn('[ARGUS] no DOM mount point for pixel; skipping'); return; }
@@ -732,7 +732,7 @@
             </div>
           </div>
           <div class="hero-cta" style="margin:0 0 16px">
-            <a class="btn btn-primary" href="https://checkout.connections.icu/licence/3fd2c9a5-0806-428f-b0fd-4a1ff7898fcd" target="_blank" rel="noopener">Buy a commercial licence</a>
+            <a class="btn btn-primary" href="https://checkout.connectionsapi.com/licence/3fd2c9a5-0806-428f-b0fd-4a1ff7898fcd" target="_blank" rel="noopener">Buy a commercial licence</a>
           </div>
           <p class="prose muted">Checkout is handled by Connections, so that is the name on the receipt. Volume pricing: <a href="https://discord.gg/PsWpeNUzhk" target="_blank" rel="noopener">ask on Discord</a>. Terms: <a href="pricing.md">pricing.md</a>.</p>
         </div>
