@@ -12,7 +12,7 @@ Machine-readable summary for agents and buyers. Plain-language answer: **RepoYet
 | Source code | $0 | https://github.com/LunarWerxs/RepoYeti, PolyForm Noncommercial 1.0.0. Bundled file-type icons are from vscode-icons under a separate CC BY-SA license. |
 
 Buy a commercial license:
-https://checkout.connections.icu/licence/3fd2c9a5-0806-428f-b0fd-4a1ff7898fcd
+https://checkout.connectionsapi.com/licence/3fd2c9a5-0806-428f-b0fd-4a1ff7898fcd
 
 Checkout is handled by Connections, which is the name that appears on the receipt and the card
 statement. Volume pricing for a team is available; ask on Discord (https://discord.gg/PsWpeNUzhk).
