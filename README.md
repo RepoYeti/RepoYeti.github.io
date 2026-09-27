@@ -44,5 +44,4 @@ Edit `index.html` and push to `main`. GitHub Pages redeploys automatically.
 It measures what a visitor actually reads, so collapsed `<details>`, elements with a `hidden`
 attribute and `<noscript>` do not count. A naive word count reads about three times high.
 
-To see a change rather than measure it, use `~/.claude/tools/shot/shotpage.mjs`, which
-screenshots the page with the scroll-reveal animations forced to their finished state.
+To see a change rather than measure it, screenshot it as [docs/screenshots.md](docs/screenshots.md) describes (the `shotpage.mjs` tool, which forces the scroll-reveal animations to their finished state first).
