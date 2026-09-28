@@ -15,7 +15,7 @@ Buy a commercial license:
 https://checkout.connectionsapi.com/licence/3fd2c9a5-0806-428f-b0fd-4a1ff7898fcd
 
 Checkout is handled by Connections, which is the name that appears on the receipt and the card
-statement. Volume pricing for a team is available; ask on Discord (https://discord.gg/DtE5bZh49m).
+statement. Volume pricing for a team is available; ask on Discord (https://lunarwerx.com/discord/repoyeti).
 
 ## Costs the user actually bears (bring-your-own)
 
