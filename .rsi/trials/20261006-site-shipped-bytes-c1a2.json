@@ -1,5 +1,88 @@
 {
- "closed": null,
+ "closed": {
+  "a": {
+   "commit": "6259214695abdfdd40825d85ddb9147e5bc88193",
+   "def_hash": "7e260b9a1d39d813",
+   "dirty": false,
+   "id": "m-20261006T101950-7f544d",
+   "load_after": 0.742,
+   "load_before": 0.834,
+   "machine": "MPC-HELL",
+   "metric": "site.shipped_bytes",
+   "project": "repoyeti-github-io",
+   "reason": null,
+   "seconds": 0.271,
+   "settings": {
+    "gate": "exact",
+    "kind": "size",
+    "measure_files": {
+     "scripts/rsi/shipped_bytes.py": "dbdfdd30bf7da3c7a2136e778e37054ee69d8d1d"
+    }
+   },
+   "started": "2026-10-06T10:19:50+00:00",
+   "status": "ok",
+   "value": 2597848
+  },
+  "applies_if": "\\.png",
+  "at": "2026-10-06T10:20:10+00:00",
+  "b": {
+   "commit": "934e219a5d78212c74a343890241d0a9ac0e1f42",
+   "def_hash": "7e260b9a1d39d813",
+   "dirty": false,
+   "id": "m-20261006T102005-c74b6f",
+   "load_after": 0.758,
+   "load_before": 0.746,
+   "machine": "MPC-HELL",
+   "metric": "site.shipped_bytes",
+   "project": "repoyeti-github-io",
+   "reason": null,
+   "seconds": 0.151,
+   "settings": {
+    "gate": "exact",
+    "kind": "size",
+    "measure_files": {
+     "scripts/rsi/shipped_bytes.py": "dbdfdd30bf7da3c7a2136e778e37054ee69d8d1d"
+    }
+   },
+   "started": "2026-10-06T10:20:05+00:00",
+   "status": "ok",
+   "value": 2452466
+  },
+  "guards": [
+   {
+    "a": 0,
+    "b": 0,
+    "declared": false,
+    "metric": "arkitect_gating_errors",
+    "state": "ok"
+   },
+   {
+    "a": 7,
+    "b": 7,
+    "declared": false,
+    "metric": "arkitect_warnings",
+    "state": "ok"
+   },
+   {
+    "a": 171,
+    "b": 171,
+    "declared": false,
+    "metric": "arkitect_no_data",
+    "state": "ok"
+   },
+   {
+    "a": 0,
+    "b": 0,
+    "declared": false,
+    "metric": "deps_total",
+    "state": "ok"
+   }
+  ],
+  "method": "exact: 2597848 -> 2452466",
+  "note": "lossless PNG re-encode, pixel-identical, 6 of 8 images smaller",
+  "pattern": "PIL optimize + compress_level 9 shrinks unoptimised PNGs losslessly",
+  "verdict": "kept"
+ },
  "def_hash": "7e260b9a1d39d813",
  "id": "20261006-site-shipped-bytes-c1a2",
  "idea": "lossless PNG re-encode (optimize, level 9, pixel-identical) of logo, og and shots",
