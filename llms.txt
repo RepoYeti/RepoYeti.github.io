@@ -1,8 +1,8 @@
 # RepoYeti
 
-> A little daemon on your computer, a dashboard on your phone. Fetch, commit, and push from anywhere — with a live repo grid, git-graph history, Monaco diffs, and AI Smart Commit.
+> A little daemon on your computer, a dashboard on your phone. Fetch, commit, and push from anywhere, with a live repo grid, git-graph history, Monaco diffs, and AI Smart Commit.
 
-RepoYeti runs a small daemon on your machine, finds every git repo you have, and serves a dashboard to your phone over a private tunnel. It's built for the moment you're away from your desk and something needs a git command right now, so you're not typing SSH keys into a phone keyboard or waiting until you get home. The dangerous git operations are deliberately left out — no force-push, no `reset --hard`, no rebase — and pulls are fast-forward-only.
+RepoYeti runs a small daemon on your machine, finds every git repo you have, and serves a dashboard to your phone over a private tunnel. It's built for the moment you're away from your desk and something needs a git command right now, so you're not typing SSH keys into a phone keyboard or waiting until you get home. The dangerous git operations are deliberately left out (no force-push, no `reset --hard`, no rebase), and pulls are fast-forward-only.
 
 ## Key facts
 - A small daemon runs on your computer, finds every git repo you have, and serves a dashboard to your phone; core git management is fully self-hosted and offline, no LunarWerx account required.
@@ -12,11 +12,26 @@ RepoYeti runs a small daemon on your machine, finds every git repo you have, and
 - Smart Commit (AI, bring-your-own-key) splits a messy working tree into clean commits. Groq is the suggested free provider (about 30 seconds to set up); OpenAI, Claude, Gemini, OpenRouter, and DeepSeek also work. Keys are kept in the OS keychain, never shown to the dashboard, and sent only to the provider they belong to; the diff being committed goes to that provider when you use the feature.
 - Deliberately missing the dangerous git operations: no force-push, no `reset --hard`, no rebase; pulls are fast-forward-only and stop on a diverged branch instead of merging.
 - Per-repo git identities, so commits use the right author automatically.
+- Works with any git remote the computer already reaches: GitHub, GitLab, Bitbucket, Gitea, Forgejo or a self-hosted server, over SSH or HTTPS. Repos on Cloudflare Artifacts push, pull, fetch and clone too: one Cloudflare API token saved in Settings (kept in the OS keychain), and each operation gets its own short-lived token for that one repo, read-only unless it pushes.
 - Remote access opens a private Cloudflare tunnel (`repoyeti start --tunnel`) and prints a QR code; requires `cloudflared` installed separately. Sign-in is "Sign in with Connections" (OIDC/PKCE); cloud sign-in and settings sync are optional and off by default.
 - AI agents: `repoyeti mcp` exposes local repos plus guarded remote commit/sync over MCP; the full HTTP API is at `GET /api/openapi.json`.
 - Privacy: nothing is mirrored or uploaded to RepoYeti's servers. Git traffic goes to your own remotes; Smart Commit and AI conflict resolution send the relevant diff or conflicted text to the AI provider you configured, under your key, only when you use them; optional settings sync sends dashboard preferences (never code, credentials, or paths) to Connections. The daemon pings Connections Studio at most once a day for an update check (install id, version, coarse OS tag; the server also derives and stores a coarse location, your network's ASN, locale, and a truncated user agent from that ping, but never an IP address, code, file paths, usernames, or hostnames); opt out with `REPOYETI_NO_PING=1`.
 - Built with Bun, `bun:sqlite`, Hono, and `simple-git` on the daemon; Vue 3 + Tailwind PWA on the dashboard.
 - RepoYeti is source-available under PolyForm Noncommercial 1.0.0, copyright LunarWerx Studios. Use is free for purposes permitted by that license; commercial use outside those permissions requires a license, priced at US$79 per installation (perpetual, including 12 months of updates) - buy at https://checkout.connections.icu/licence/3fd2c9a5-0806-428f-b0fd-4a1ff7898fcd, full terms at https://repoyeti.com/pricing.md. Checkout is handled by Connections, which is the name on the receipt. Earlier MIT grants remain in effect for earlier copies.
+
+## Also from LunarWerx Studios
+
+Other tools from the same publisher, for neighbouring needs. Each is on GitHub, and most are free for personal use and run on your own machine.
+
+- AgentHydra (https://agenthydra.lunarwerx.com/, source https://github.com/LunarWerxs/AgentHydra): one local dashboard for every Claude Code, Codex and OpenCode session, with each account's usage and a queue you can schedule. For anyone running several AI coding agents or accounts at once.
+- DevWebUI (https://devwebui.lunarwerx.com/, source https://github.com/LunarWerxs/DevWebUI): start, stop and watch every local dev server across your projects, from a dashboard or an MCP server an AI agent can drive.
+- ReDesign (https://redesign.lunarwerx.com/, source https://github.com/LunarWerxs/ReDesign): drop in a UI screenshot and get self-contained HTML redesigns from ten AI models at once.
+- SageThumbs 2K (https://sagethumbs.lunarwerx.com/, source https://github.com/LunarWerxs/SageThumbs-2k): Windows Explorer thumbnails and previews for 360+ file types Windows can't show, from a crash-isolated Rust shell extension.
+- NormWind (https://normwind.lunarwerx.com/, source https://github.com/LunarWerxs/NormWind): a zero-config CLI and GitHub Action that rewrites bloated Tailwind CSS classes into canonical ones.
+- AnatomyOf (https://anatomyof.lunarwerx.com/, source https://github.com/LunarWerxs/AnatomyOf): an interactive, annotated tour of what is inside a source file, for 48 languages.
+- QuickDictate (https://quickdictate.lunarwerx.com/, source https://github.com/LunarWerxs/QuickDictate): hold a hotkey, speak, and it types into whatever Windows app has focus.
+- PyOverdrive (https://github.com/LunarWerxs/PyOverdrive): a drop-in NumPy accelerator; enable() swaps in proof-tested fast paths, call by call.
+- Every product: https://lunarwerx.com/ and https://github.com/LunarWerxs
 
 ## Links
 - Home: https://repoyeti.com/

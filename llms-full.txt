@@ -2,7 +2,7 @@
 
 > A little daemon on your computer, a dashboard on your phone. Fetch, commit, and push from anywhere, with a live repo grid, git-graph history, Monaco diffs, and AI Smart Commit.
 
-Version: v1.0.1. RepoYeti is source-available under PolyForm Noncommercial 1.0.0, copyright LunarWerx Studios. Use is free for purposes permitted by that license; commercial use outside those permissions requires a license, priced at US$79 per installation (perpetual, including 12 months of updates) - buy at https://checkout.connections.icu/licence/3fd2c9a5-0806-428f-b0fd-4a1ff7898fcd, full terms at https://repoyeti.com/pricing.md. Checkout is handled by Connections, which is the name on the receipt. Earlier MIT grants remain in effect for earlier copies.
+Version: v1.3.0. RepoYeti is source-available under PolyForm Noncommercial 1.0.0, copyright LunarWerx Studios. Use is free for purposes permitted by that license; commercial use outside those permissions requires a license, priced at US$79 per installation (perpetual, including 12 months of updates) - buy at https://checkout.connections.icu/licence/3fd2c9a5-0806-428f-b0fd-4a1ff7898fcd, full terms at https://repoyeti.com/pricing.md. Checkout is handled by Connections, which is the name on the receipt. Earlier MIT grants remain in effect for earlier copies.
 
 ## What it is
 
@@ -19,6 +19,7 @@ Developers and small teams who already work from git and want to fetch, review, 
 - **Real Monaco diff viewer.** The same editor VS Code uses, syntax highlighting, diffs against HEAD, and inline edit-and-save.
 - **AI Smart Commit.** Reads a messy working tree and suggests splitting it into clean, logically grouped commits. Bring your own API key; six providers are supported, Groq (free, about 30 seconds to set up), OpenAI, Claude, Gemini, OpenRouter, and DeepSeek. Keys are kept in the OS keychain, never shown to the dashboard, and sent only to the provider they belong to; the diff being committed goes to that provider when you use the feature.
 - **Per-repo git identities.** Commits use the right author automatically, so nothing goes out under the wrong email.
+- **Any git remote, Cloudflare Artifacts included.** It drives the repos already on your computer against whatever remote they use: GitHub, GitLab, Bitbucket, Gitea, Forgejo or your own server, over SSH or HTTPS. For a repo on Cloudflare Artifacts, save one Cloudflare API token with Artifacts Edit access in Settings; it stays in the OS keychain, and each push, pull, fetch or clone asks Cloudflare for a token covering only that repo, read-only unless it pushes, handed to that one git process and never written into the remote URL.
 - **Pin and hide repos** to keep the ones you actually use on top.
 - **AI agent access.** `repoyeti mcp` exposes local repos plus guarded remote commit/sync over MCP; the full HTTP API is documented at `GET /api/openapi.json`.
 
@@ -78,6 +79,20 @@ The daemon pings Connections Studio at most once a day for an update check: a ra
 **Is RepoYeti code-signed?** Yes, from version 1.0.1 onward. repoyeti.exe, the tray launcher lunarwerx-tray.exe and the tray PowerShell scripts are Authenticode-signed as CN=LUNARWERX LLC through Azure Trusted Signing and RFC-3161 timestamped, so Windows names the publisher rather than warning about an unknown one. Integrity is a separate guarantee that was already in place: every release publishes a SHA256SUMS.txt, and the built-in updater refuses any download whose SHA-256 does not match the checksum published beside it, refuses a release with no checksum file, and verifies the new binary reports the expected version before swapping it in.
 
 **How is RepoYeti different from GitHub Mobile or Working Copy?** GitHub Mobile works against your remote repos on GitHub's servers (PRs, issues, notifications) and doesn't see your desktop's working tree. Working Copy is a full iOS git client but clones each repo onto the phone as a separate copy. RepoYeti instead mirrors the exact repos already on your desktop, no clone, nothing to keep in sync.
+
+## Also from LunarWerx Studios
+
+Other tools from the same publisher, for neighbouring needs. Each is on GitHub, and most are free for personal use and run on your own machine.
+
+- AgentHydra (https://agenthydra.lunarwerx.com/, source https://github.com/LunarWerxs/AgentHydra): one local dashboard for every Claude Code, Codex and OpenCode session, with each account's usage and a queue you can schedule. For anyone running several AI coding agents or accounts at once.
+- DevWebUI (https://devwebui.lunarwerx.com/, source https://github.com/LunarWerxs/DevWebUI): start, stop and watch every local dev server across your projects, from a dashboard or an MCP server an AI agent can drive.
+- ReDesign (https://redesign.lunarwerx.com/, source https://github.com/LunarWerxs/ReDesign): drop in a UI screenshot and get self-contained HTML redesigns from ten AI models at once.
+- SageThumbs 2K (https://sagethumbs.lunarwerx.com/, source https://github.com/LunarWerxs/SageThumbs-2k): Windows Explorer thumbnails and previews for 360+ file types Windows can't show, from a crash-isolated Rust shell extension.
+- NormWind (https://normwind.lunarwerx.com/, source https://github.com/LunarWerxs/NormWind): a zero-config CLI and GitHub Action that rewrites bloated Tailwind CSS classes into canonical ones.
+- AnatomyOf (https://anatomyof.lunarwerx.com/, source https://github.com/LunarWerxs/AnatomyOf): an interactive, annotated tour of what is inside a source file, for 48 languages.
+- QuickDictate (https://quickdictate.lunarwerx.com/, source https://github.com/LunarWerxs/QuickDictate): hold a hotkey, speak, and it types into whatever Windows app has focus.
+- PyOverdrive (https://github.com/LunarWerxs/PyOverdrive): a drop-in NumPy accelerator; enable() swaps in proof-tested fast paths, call by call.
+- Every product: https://lunarwerx.com/ and https://github.com/LunarWerxs
 
 ## Links
 
