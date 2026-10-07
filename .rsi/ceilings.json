@@ -1,4 +1,10 @@
 {
+ "site.html_bytes": {
+  "at": "2026-10-07T10:48:11+00:00",
+  "commit": "b5f15724815c73c4a366aa3040acaf06b1361a55",
+  "trial": "20261007-site-html-bytes-f6d2",
+  "value": 83979
+ },
  "site.shipped_bytes": {
   "at": "2026-10-06T10:20:15+00:00",
   "commit": "934e219a5d78212c74a343890241d0a9ac0e1f42",
