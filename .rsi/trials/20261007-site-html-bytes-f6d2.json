@@ -1,0 +1,24 @@
+{
+ "closed": null,
+ "def_hash": "a9895cea61cdca88",
+ "id": "20261007-site-html-bytes-f6d2",
+ "idea": "dedupe the GitHub mark SVG (inlined twice) into one sprite symbol with two use refs",
+ "lane": "normal",
+ "metric": "site.html_bytes",
+ "opened": {
+  "at": "2026-10-07T10:46:10+00:00",
+  "by": "blogi",
+  "commit": "0436cde74b74bac85246274fc3327c2c7e3fccf0",
+  "machine": "MPC-HELL"
+ },
+ "pass_line": null,
+ "predict": {
+  "expect": 600.0,
+  "hi": 1200.0,
+  "lo": 300.0,
+  "p_keep": 0.8
+ },
+ "probe_minutes": null,
+ "project": "repoyeti-github-io",
+ "schema": "hydra-rsi-trial/1"
+}
